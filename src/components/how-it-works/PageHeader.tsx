@@ -49,7 +49,7 @@ export function PageHeader() {
 
             <button
               onClick={() => setVideoOpen(true)}
-              className="group inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-text-secondary hover:text-text-primary transition-all"
+              className="group inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-text-secondary hover:text-text-primary transition-all cursor-pointer"
             >
               <span className="relative flex items-center justify-center w-6 h-6 rounded-full bg-text-muted/20 group-hover:bg-oppr-primary/20 transition-colors">
                 <Play size={10} weight="fill" className="text-text-secondary group-hover:text-oppr-primary ml-0.5 transition-colors" />

@@ -88,7 +88,7 @@ export function ExamplesViewer() {
   return (
     <SectionWrapper bg="light">
       <div
-        className="max-w-[960px] mx-auto"
+        className="max-w-none"
         role="region"
         aria-label="Example scenarios viewer"
       >
@@ -170,16 +170,16 @@ export function ExamplesViewer() {
                         style={{
                           backgroundColor:
                             ex.category === "maintenance" ? "rgba(99,102,241,0.1)" :
-                            ex.category === "quality" ? "rgba(245,158,11,0.1)" :
-                            ex.category === "knowledge" ? "rgba(236,72,153,0.1)" :
-                            ex.category === "efficiency" ? "rgba(16,185,129,0.1)" :
-                            undefined,
+                              ex.category === "quality" ? "rgba(245,158,11,0.1)" :
+                                ex.category === "knowledge" ? "rgba(236,72,153,0.1)" :
+                                  ex.category === "efficiency" ? "rgba(16,185,129,0.1)" :
+                                    undefined,
                           color:
                             ex.category === "maintenance" ? "#6366F1" :
-                            ex.category === "quality" ? "#D97706" :
-                            ex.category === "knowledge" ? "#DB2777" :
-                            ex.category === "efficiency" ? "#059669" :
-                            undefined,
+                              ex.category === "quality" ? "#D97706" :
+                                ex.category === "knowledge" ? "#DB2777" :
+                                  ex.category === "efficiency" ? "#059669" :
+                                    undefined,
                         }}
                       >
                         {ex.categoryLabel}

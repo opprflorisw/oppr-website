@@ -70,9 +70,9 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center gradient-mesh-hero pt-[72px] overflow-hidden">
+      <section className="relative flex items-center gradient-mesh-hero pt-[72px] overflow-hidden">
 
-        <div className="container-wide py-16 lg:py-24 relative z-10">
+        <div className="container-wide py-10 lg:py-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Content */}
             <motion.div
@@ -119,7 +119,7 @@ export function HeroSection() {
                 </Link>
                 <button
                   onClick={() => setVideoOpen(true)}
-                  className="group inline-flex items-center gap-2 px-5 py-3 text-base font-semibold text-text-secondary hover:text-oppr-primary transition-all"
+                  className="group inline-flex items-center gap-2 px-5 py-3 text-base font-semibold text-text-secondary hover:text-oppr-primary transition-all cursor-pointer"
                 >
                   <span className="relative flex items-center justify-center w-10 h-10 rounded-full bg-text-muted/10 group-hover:bg-oppr-primary/10 transition-colors">
                     <Play size={16} weight="fill" className="text-text-secondary group-hover:text-oppr-primary ml-0.5 transition-colors" />

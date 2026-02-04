@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Override Preflight's cursor:default on buttons */
+@layer base {
+  button {
+    cursor: pointer;
+  }
+}
+
 /* ============================================
    OPPR.AI DESIGN SYSTEM v2 — Premium SaaS
    ============================================ */

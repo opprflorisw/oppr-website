@@ -43,7 +43,7 @@ const team = [
   {
     name: "Anca Giurgiu",
     role: "Full-Stack Developer",
-    image: "/images/profile_pic/anca.jpg",
+    image: "/images/profile_pic/anca-v2.jpg",
     linkedin: "https://www.linkedin.com/in/ancagiurgiu/",
   },
   {

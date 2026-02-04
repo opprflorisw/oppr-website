@@ -1,0 +1,34 @@
+View Floris Wyers’  graphic link
+Floris WyersFloris Wyers
+   • YouPremium • You
+Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.
+Visit my website
+6mo • Edited •  6 months ago • Edited • Visible to anyone on or off LinkedIn
+
+Dark factories! The future of manufacturing?
+(https://lnkd.in/eew7Su7F)
+
+Yes, eventually. But coming from production environments myself, I still see this as a distant future.
+
+Let me give you my two cents:
+
+The buzz around Industry 4.0, AI, and "dark factories" is deafening. Yet, it overlooks a fundamental truth: factories today are designed to be operated by humans. As Bart Rosendaal from SkyNRG rightly pointed out during a recent conference from ICT Group, we aren't on the verge of replacing this reality overnight—not because the technology isn't ready, but because our factories are (currently) not designed for it.
+
+I spent nearly 15 years in the process industry, and it taught me that true automation requires near-perfect control over every variable: input, process, and output. Designing a factory with a capacity of 'X' is one thing; actually achieving 'X' is damn hard. There are countless external factors, and you constantly have to ask: What defines a "perfect" product or process? How much variation can you accept? How many extra unknowns must you design for? A dark factory must be able to manage all of this flawlessly.
+
+A factory isn't just one machine; it's a complex ecosystem of core processes, supporting assets, and crucially, human expertise. You can't just automate the core process and ignore the other factors. And even then, you'll still need humans to address unplanned issues.
+
+Truth is, designing for a "dark factory" would likely make it 2-3 times more expensive. You have to build in enormous slack and buffer capacity to absorb all the unpredictable elements and ensure consistent output. I saw this firsthand at during my experience working at an engineering firm—it’s all a risk game. Reducing risk means increasing cost. A dark factory must operate with the highest precision, minimize risk, which means a much higher price tag.
+
+In my opinion, we are not there yet, nor will we be anytime soon. There are too many factors you can't design for (yet..), where you need an experienced operator to evaluate the situation and make a well-informed decision. The human-in-the-loop is, and will remain, the path forward.
+
+So, what's the pragmatic path forward?
+It’s not about replacing operators, but empowering them. It’s about creating a better operator who runs the process more effectively using data to make the best possible decisions.
+
+Dark factories aside, AI and Industry 4.0 are absolutely the future, but there are steps in between where we are now and a fully autonomous factory. This is our mission at Oppr.ai. We provide the AI-powered "Digital Operator" to help manufacturers bridge this exact gap. Our platform creates a seamlessly integrated, closed-loop continuous improvement system for data capture, intelligent analysis and knowledge management, keeping the operator at the core.
+
+We're building the bridge to the future, one empowered operator at a time.
+
+What do you see as the biggest hurdle to the "dark factory" vision?
+
+https://www.youtube.com/watch?v=-zt8kCcq3Is

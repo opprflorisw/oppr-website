@@ -1,0 +1,63 @@
+Floris WyersFloris Wyers
+   • YouPremium • You
+Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.
+Visit my website
+1mo •  1 month ago • Visible to anyone on or off LinkedIn
+𝐀𝐈 𝐢𝐬 𝐩𝐥𝐚𝐭𝐞𝐚𝐮𝐢𝐧𝐠. That’s actually great news for manufacturing.
+
+In 2025 I've been hearing about AI smartness “slowing down.”
+
+And for the first time in years, I think that’s a good thing.
+
+Two leading AI minds had the following to say: 
+Ilya Sutskever (SSI) said the scaling laws that fueled billions in AI investment are hitting a wall.
+Yann LeCun (Meta) followed with: “LLMs don’t understand the physical world.”
+
+The AI hype machine is recalibrating.
+And manufacturing desperately needed that reset.
+
+For years, the message has been: 𝐖𝐚𝐢𝐭.
+
+Wait for smarter models.
+Wait for autonomous agents.
+Wait for AGI.
+
+Meanwhile, reality looks like this:
+
+• 𝟐.𝟏 𝐦𝐢𝐥𝐥𝐢𝐨𝐧 manufacturing jobs unfilled by 2030 (US Labor Statistics)
+• 𝟕𝟎% of digital transformation initiatives fail (BCG, McKinsey)
+• 𝟏𝟎,𝟎𝟎𝟎 experienced operators retiring every single day (US Census)
+
+We don’t have time to wait.
+
+Walker Reynolds (IIoT/ Industry 4.0 expert) said it best:
+ “𝑇ℎ𝑒 𝑠𝑚𝑎𝑟𝑡𝑒𝑠𝑡 𝑝𝑒𝑜𝑝𝑙𝑒 𝑖𝑛 𝑦𝑜𝑢𝑟 𝑜𝑟𝑔𝑎𝑛𝑖𝑧𝑎𝑡𝑖𝑜𝑛 𝑎𝑟𝑒 𝑜𝑛 𝑡ℎ𝑒 𝑝𝑙𝑎𝑛𝑡 𝑓𝑙𝑜𝑜𝑟. 𝑇ℎ𝑒𝑦 𝑎𝑙𝑟𝑒𝑎𝑑𝑦 𝑘𝑛𝑜𝑤 𝑤ℎ𝑎𝑡’𝑠 𝑤𝑟𝑜𝑛𝑔. 𝐺𝑜 𝑡𝑎𝑙𝑘 𝑡𝑜 𝑎𝑛 𝑜𝑝𝑒𝑟𝑎𝑡𝑜𝑟.”
+
+So here’s the real question:
+
+What if the breakthrough isn’t smarter AI, but AI that finally captures what operators already know?
+
+That technology exists today.
+
+• Voice input that works in any language
+• Image capture that reads gauges and panels
+• Natural language that turns observations into structured data
+
+Sam Altman recently said the keyboard was “designed to slow down how fast humans can input information.”
+
+For an operator wearing gloves, walking the floor, noticing something off…
+
+Voice isn’t a convenience.
+It’s liberation.
+
+AI plateauing means the race to “𝐦𝐨𝐫𝐞 𝐢𝐧𝐭𝐞𝐥𝐥𝐢𝐠𝐞𝐧𝐭” is slowing.
+But the race to "𝐛𝐞𝐭𝐭𝐞𝐫 𝐚𝐩𝐩𝐥𝐢𝐞𝐝" is just beginning.
+
+Manufacturing doesn’t need AI that thinks like a human.
+It needs AI that listens to them.
+
+At Oppr.ai, that’s exactly what we’re building.
+
+And in 2026, I think more manufacturers will realize the answer was on their floor all along.
+
+ Are you waiting for smarter AI — or applying what already exists?

@@ -1,0 +1,59 @@
+Floris WyersFloris Wyers
+   • YouPremium • You
+Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.
+Visit my website
+2w • Edited •  2 weeks ago • Edited • Visible to anyone on or off LinkedIn
+
+𝗬𝗼𝘂𝗿 𝗺𝗮𝗰𝗵𝗶𝗻𝗲𝘀 𝗵𝗮𝘃𝗲 𝘀𝗰𝗿𝗲𝗲𝗻𝘀. 𝗬𝗼𝘂𝗿 𝗼𝗽𝗲𝗿𝗮𝘁𝗼𝗿𝘀 𝘄𝗮𝗹𝗸 𝗽𝗮𝘀𝘁 𝘁𝗵𝗲𝗺 𝗲𝘃𝗲𝗿𝘆 𝗱𝗮𝘆. 𝗦𝗼 𝘄𝗵𝘆 𝗶𝘀 𝘁𝗵𝗮𝘁 𝗱𝗮𝘁𝗮 𝘀𝘁𝗶𝗹𝗹 𝗻𝗼𝘁 𝗶𝗻 𝗮𝗻𝘆 𝘀𝘆𝘀𝘁𝗲𝗺?
+
+Your equipment runs fine. It's paid off. But it's "offline"—not connected to anything. 
+
+Full digitization? Hard to justify the ROI on machines that work perfectly well. Yet you're flying blind on data that could help you improve.
+
+So you do nothing. Or worse: paper forms in binders, Excel files with timestamps you can't trust, readings taken "sometime during the shift"—an 8-hour window with no idea when that value was captured.
+
+𝗧𝗵𝗲 𝘁𝗿𝗮𝗱𝗶𝘁𝗶𝗼𝗻𝗮𝗹 𝗱𝗶𝗴𝗶𝘁𝗶𝘇𝗮𝘁𝗶𝗼𝗻 𝗽𝗮𝘁𝗵:
+→ Install SCADA infrastructure with cables running everywhere or wireless sensors (expensive...)
+→ Servers, maintenance, dashboards
+→ Train your team to interpret data—or hire someone who can
+
+This might make sense for factories looking for complete transformation with budget, timeline, and people.
+
+But for 95% of production facilities with mature assets? It's overkill.
+
+𝗧𝗵𝗮𝘁'𝘀 𝘁𝗵𝗲 𝗴𝗮𝗽 𝘄𝗲 𝗯𝘂𝗶𝗹𝘁 Oppr.ai 𝘁𝗼 𝗳𝗶𝗹𝗹.
+Not millisecond updates. Not "sometime this shift" either. Structured, validated, timestamped data—captured when operators do their rounds.
+
+𝗛𝗲𝗿𝗲'𝘀 𝗵𝗼𝘄 𝗶𝘁 𝘄𝗼𝗿𝗸𝘀:
+📱 Operator points phone at HMI screen
+📸 AI extracts values automatically
+✅ System validates against your boundaries
+⚡ Operator gets instant feedback: "Pressure high—check valve"
+
+No hardware. No cables. No IT project. No specialist required to interpret. Live in days.
+
+𝗪𝗵𝘆 𝘁𝗵𝗶𝘀 𝗶𝘀𝗻'𝘁 "𝗷𝘂𝘀𝘁 𝗢𝗖𝗥": 
+Standard OCR is never fully reliable—you can't be certain the output is correct, which means someone still has to verify it. We've built a structured approach: you define exactly what the system should capture in advance, so it knows where to look and what values to expect. The result is deterministic output you can trust—and act on immediately.
+
+𝗧𝗵𝗲 𝗸𝗲𝘆 𝗱𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲:
+Most digitization ends at the dashboard. Data flows field → system → control room. Then someone has to notice, interpret, and walk back to the floor.
+
+Oppr closes the loop. Field → AI → back to the field. 
+
+The operator receives intelligence at the point of work—and can act immediately.
+
+That's continuous improvement built into daily operations, not just reporting.
+
+Is it a replacement for full SCADA? 𝗡𝗼.
+Is it 10x better than what most plants do today? 𝗔𝗯𝘀𝗼𝗹𝘂𝘁𝗲𝗹𝘆.
+
+𝗧𝗵𝗶𝘀 𝗶𝘀 𝗳𝗼𝗿 𝘆𝗼𝘂 𝗶𝗳:
+✓ Machines that work well—but aren't connected
+✓ Operators already doing rounds
+✓ No budget for a hardware project
+✓ Data gaps you've accepted as "just how it is"
+
+Turn anything into a data source—using the sensors you already have: 
+𝘆𝗼𝘂𝗿 𝗽𝗲𝗼𝗽𝗹𝗲.
+
+Want to see how it works? Comment or DM.

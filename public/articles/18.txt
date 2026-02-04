@@ -1,0 +1,31 @@
+Floris WyersFloris Wyers
+   • YouPremium • You
+Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.Oppr.ai | Building the human data layer for manufacturing | The what from machines. The why from people. Together.
+Visit my website
+1yr • Edited •  1 year ago • Edited • Visible to anyone on or off LinkedIn
+
+𝐖𝐚𝐚𝐫𝐨𝐦 𝐆𝐨𝐞𝐝𝐞 𝐃𝐚𝐭𝐚 𝐝𝐞 𝐒𝐥𝐞𝐮𝐭𝐞𝐥 𝐢𝐬 𝐭𝐨𝐭 𝐒𝐮𝐜𝐜𝐞𝐬𝐯𝐨𝐥𝐥𝐞 𝐀𝐈 𝐢𝐧 𝐝𝐞 𝐌𝐚𝐚𝐤𝐢𝐧𝐝𝐮𝐬𝐭𝐫𝐢𝐞
+
+In een FD-artikel van 11 oktober, "Bedrijven struikelen over hun chaotische data op weg naar AI-succes", wordt beschreven hoe bedrijven die snel AI willen toepassen vaak vastlopen op het verzamelen en structureren van hun data. Hoewel het artikel een verzekeraar noemt, geldt dit net zo goed voor de maakindustrie: succesvol gebruik van AI begint met het op orde brengen van je data.
+
+𝐇𝐞𝐭 𝐆𝐫𝐨𝐭𝐞 𝐏𝐫𝐨𝐛𝐥𝐞𝐞𝐦
+
+Veel organisaties willen met AI aan de slag, maar zonder voldoende en kwalitatief goede data kom je niet ver. Bovendien is de manier waarop data is georganiseerd cruciaal. Vaak staat vergelijkbare informatie verspreid over verschillende systemen, wat leidt tot chaos. Dit belemmert niet alleen het inzicht, maar maakt het ook lastig om AI effectief in te zetten.
+
+𝐃𝐞 𝐃𝐫𝐢𝐞 𝐕'𝐬 𝐯𝐚𝐧 𝐆𝐨𝐞𝐝𝐞 𝐃𝐚𝐭𝐚
+
+AI-modellen zijn voor iedereen beschikbaar, maar goede, unieke data maakt het verschil. In het artikel worden drie belangrijke aspecten genoemd: volume, variëteit en versheid van data voor effectieve AI-toepassingen. Bij Oppr.ai helpen we klanten dit te realiseren door data toegankelijk, gestructureerd en consistent te maken. Denk aan het organiseren van hand ingevulde Excel-bestanden, kwaliteitsrapporten, machine data en operator-feedback. Bij AI geldt: "Garbage in, garbage out." Daarom is schone, up-to-date data cruciaal.
+
+𝐃𝐞 𝐇𝐞𝐢𝐥𝐢𝐠𝐞 𝐆𝐫𝐚𝐚𝐥: 𝐒𝐲𝐬𝐭𝐞𝐦𝐞𝐧 𝐕𝐞𝐫𝐛𝐢𝐧𝐝𝐞𝐧
+
+Naast goede data is het verbinden van systemen essentieel, wat het artikel terecht de "heilige graal" noemt. Bij Oppr.ai zien we dit ook in de maakindustrie. Door data te structureren en bronnen te verbinden, ontstaat een data-tijdlijn die volledig inzicht geeft in je processen (input, verwerking en output). We hebben dit met succes toegepast bij meerdere klanten, wat verbluffende resultaten opleverde: operationele inzichten en de mogelijkheid om proactief problemen te voorspellen en processen te optimaliseren.
+
+𝐃𝐞 𝐕𝐨𝐥𝐠𝐞𝐧𝐝𝐞 𝐒𝐭𝐚𝐩: 𝐈𝐧𝐝𝐮𝐬𝐭𝐫𝐢𝐞- 𝐞𝐧 𝐊𝐥𝐚𝐧𝐭𝐬𝐩𝐞𝐜𝐢𝐟𝐢𝐞𝐤𝐞 𝐀𝐈-𝐌𝐨𝐝𝐞𝐥𝐥𝐞𝐧
+
+Met goede data management, kun je ook kleinere, specifieke AI-modellen gebruiken of bouwen, afgestemd op jouw sector en fabriek. Deze zijn goedkoper, sneller en gerichter dan grote, generieke modellen. Bij Oppr.ai trainen we bedrijfsgerichte modellen met jouw data, zodat je volledige controle hebt en betrouwbare uitkomsten krijgt, afgestemd op jouw productieproces.
+
+𝐁𝐞𝐧𝐢𝐞𝐮𝐰𝐝 𝐧𝐚𝐚𝐫 𝐝𝐞 𝐌𝐨𝐠𝐞𝐥𝐢𝐣𝐤𝐡𝐞𝐝𝐞𝐧?
+
+Wil je weten hoe jouw productiebedrijf optimaal gebruik kan maken van data? Maak een afspraak! We analyseren je historische data uit verschillende bronnen en geven verbeterpunten die je direct kunt implementeren of verder onderzoeken.
+
+Geinteresseerd? Stuur mij een berichtje of neem contact op via info@oppr.ai

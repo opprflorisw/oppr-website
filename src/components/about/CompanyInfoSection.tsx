@@ -8,7 +8,7 @@ import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { staggerContainer, waveChild } from "@/lib/animations";
 
 const infoItems = [
-  { icon: Calendar, label: "Founded", value: "2024" },
+  { icon: Calendar, label: "Founded", value: "2023" },
   { icon: MapPin, label: "Headquarters", value: "The Hague, Netherlands" },
   { icon: Users, label: "Team", value: "Growing" },
   { icon: Rocket, label: "Funding", value: "VC Funded" },

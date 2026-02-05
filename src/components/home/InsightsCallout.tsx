@@ -50,7 +50,7 @@ export function InsightsCallout() {
                 </Link>
 
                 <Link
-                  href="/insights"
+                  href="/demo"
                   className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-oppr-secondary/10 to-amber-50 border border-oppr-secondary/20 hover:border-oppr-secondary/40 transition-all"
                 >
                   <Sparkle size={16} weight="fill" className="text-oppr-secondary" />

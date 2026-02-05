@@ -72,7 +72,7 @@ export function HeroSection() {
     <>
       <section className="relative flex items-center gradient-mesh-hero pt-[72px] overflow-hidden">
 
-        <div className="container-wide py-10 lg:py-16 relative z-10">
+        <div className="container-wide py-12 lg:py-20 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Content */}
             <motion.div

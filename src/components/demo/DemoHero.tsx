@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
 import { CheckCircle } from "@phosphor-icons/react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
@@ -27,6 +28,59 @@ const inputClasses =
   "w-full border border-border-light rounded-lg px-4 py-3 focus:border-oppr-primary focus:outline-none text-text-primary bg-white transition-colors";
 
 export function DemoHero() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    role: "",
+    companySize: "",
+    interest: "",
+    notes: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setStatus("success");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        role: "",
+        companySize: "",
+        interest: "",
+        notes: "",
+      });
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
+  }
+
   return (
     <SectionWrapper bg="light" className="pt-28">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -83,179 +137,243 @@ export function DemoHero() {
         {/* Right — Form */}
         <AnimatedSection delay={0.15}>
           <div className="bg-white border border-border-light rounded-2xl p-6 shadow-sm">
-            <div className="text-center border-b border-border-light pb-5 mb-6">
-              <h2 className="text-xl font-semibold text-text-primary mb-1">
-                Request Your Demo
-              </h2>
-              <p className="text-sm text-text-secondary">
-                Fill out the form and we&apos;ll be in touch within one business
-                day.
-              </p>
-            </div>
-
-            <form className="space-y-5">
-              {/* First + Last Name */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="demo-first-name"
-                    className="block text-sm font-medium text-text-primary mb-1.5"
-                  >
-                    First Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="demo-first-name"
-                    type="text"
-                    required
-                    className={inputClasses}
-                    placeholder="First name"
-                  />
+            {status === "success" ? (
+              <div className="text-center py-12">
+                <div className="flex justify-center mb-4">
+                  <CheckCircle size={56} weight="fill" className="text-green-500" />
                 </div>
-                <div>
-                  <label
-                    htmlFor="demo-last-name"
-                    className="block text-sm font-medium text-text-primary mb-1.5"
-                  >
-                    Last Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="demo-last-name"
-                    type="text"
-                    required
-                    className={inputClasses}
-                    placeholder="Last name"
-                  />
+                <h3 className="text-xl font-semibold text-text-primary mb-2">
+                  Demo Requested!
+                </h3>
+                <p className="text-text-secondary mb-6">
+                  Thanks for your interest! We&apos;ll email you within one
+                  business day to schedule your demo.
+                </p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="text-oppr-primary font-medium hover:underline"
+                >
+                  Submit another request
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="text-center border-b border-border-light pb-5 mb-6">
+                  <h2 className="text-xl font-semibold text-text-primary mb-1">
+                    Request Your Demo
+                  </h2>
+                  <p className="text-sm text-text-secondary">
+                    Fill out the form and we&apos;ll be in touch within one business
+                    day.
+                  </p>
                 </div>
-              </div>
 
-              {/* Work Email */}
-              <div>
-                <label
-                  htmlFor="demo-email"
-                  className="block text-sm font-medium text-text-primary mb-1.5"
-                >
-                  Work Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="demo-email"
-                  type="email"
-                  required
-                  className={inputClasses}
-                  placeholder="you@company.com"
-                />
-              </div>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* First + Last Name */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="demo-first-name"
+                        className="block text-sm font-medium text-text-primary mb-1.5"
+                      >
+                        First Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        id="demo-first-name"
+                        name="firstName"
+                        type="text"
+                        required
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        className={inputClasses}
+                        placeholder="First name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="demo-last-name"
+                        className="block text-sm font-medium text-text-primary mb-1.5"
+                      >
+                        Last Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        id="demo-last-name"
+                        name="lastName"
+                        type="text"
+                        required
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className={inputClasses}
+                        placeholder="Last name"
+                      />
+                    </div>
+                  </div>
 
-              {/* Company */}
-              <div>
-                <label
-                  htmlFor="demo-company"
-                  className="block text-sm font-medium text-text-primary mb-1.5"
-                >
-                  Company <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="demo-company"
-                  type="text"
-                  required
-                  className={inputClasses}
-                  placeholder="Your company"
-                />
-              </div>
+                  {/* Work Email */}
+                  <div>
+                    <label
+                      htmlFor="demo-email"
+                      className="block text-sm font-medium text-text-primary mb-1.5"
+                    >
+                      Work Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="demo-email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={inputClasses}
+                      placeholder="you@company.com"
+                    />
+                  </div>
 
-              {/* Role + Company Size */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="demo-role"
-                    className="block text-sm font-medium text-text-primary mb-1.5"
+                  {/* Company */}
+                  <div>
+                    <label
+                      htmlFor="demo-company"
+                      className="block text-sm font-medium text-text-primary mb-1.5"
+                    >
+                      Company <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="demo-company"
+                      name="company"
+                      type="text"
+                      required
+                      value={formData.company}
+                      onChange={handleChange}
+                      className={inputClasses}
+                      placeholder="Your company"
+                    />
+                  </div>
+
+                  {/* Role + Company Size */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="demo-role"
+                        className="block text-sm font-medium text-text-primary mb-1.5"
+                      >
+                        Your Role
+                      </label>
+                      <select
+                        id="demo-role"
+                        name="role"
+                        value={formData.role}
+                        onChange={handleChange}
+                        className={inputClasses}
+                      >
+                        <option value="">Select your role</option>
+                        <option value="plant-manager">Plant Manager</option>
+                        <option value="operations-director">Operations Director</option>
+                        <option value="maintenance-manager">Maintenance Manager</option>
+                        <option value="quality-manager">Quality Manager</option>
+                        <option value="continuous-improvement">Continuous Improvement</option>
+                        <option value="consultant">Consultant</option>
+                        <option value="investor">Investor</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="demo-size"
+                        className="block text-sm font-medium text-text-primary mb-1.5"
+                      >
+                        Company Size
+                      </label>
+                      <select
+                        id="demo-size"
+                        name="companySize"
+                        value={formData.companySize}
+                        onChange={handleChange}
+                        className={inputClasses}
+                      >
+                        <option value="">Select size</option>
+                        <option value="1-50">1-50</option>
+                        <option value="51-200">51-200</option>
+                        <option value="201-500">201-500</option>
+                        <option value="501-1000">501-1000</option>
+                        <option value="1000+">1000+</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Primary Interest */}
+                  <div>
+                    <label
+                      htmlFor="demo-interest"
+                      className="block text-sm font-medium text-text-primary mb-1.5"
+                    >
+                      Primary Interest
+                    </label>
+                    <select
+                      id="demo-interest"
+                      name="interest"
+                      value={formData.interest}
+                      onChange={handleChange}
+                      className={inputClasses}
+                    >
+                      <option value="">Select your primary interest</option>
+                      <option value="capture">Capturing operator knowledge</option>
+                      <option value="root-cause">Faster root cause analysis</option>
+                      <option value="expertise">
+                        Preserving expertise before retirement
+                      </option>
+                      <option value="ci">
+                        Continuous improvement infrastructure
+                      </option>
+                      <option value="insights">
+                        Oppr Insights strategic feedback
+                      </option>
+                      <option value="full">Full platform evaluation</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  {/* Additional notes */}
+                  <div>
+                    <label
+                      htmlFor="demo-notes"
+                      className="block text-sm font-medium text-text-primary mb-1.5"
+                    >
+                      Anything specific you&apos;d like us to cover?
+                    </label>
+                    <textarea
+                      id="demo-notes"
+                      name="notes"
+                      rows={3}
+                      value={formData.notes}
+                      onChange={handleChange}
+                      className={inputClasses}
+                      placeholder="Tell us about your operation or specific needs..."
+                    />
+                  </div>
+
+                  {/* Error message */}
+                  {status === "error" && (
+                    <div className="bg-red-50 text-red-600 text-sm rounded-lg px-4 py-3">
+                      {errorMsg}
+                    </div>
+                  )}
+
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="w-full py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-primary/90 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                   >
-                    Your Role
-                  </label>
-                  <select id="demo-role" className={inputClasses}>
-                    <option value="">Select your role</option>
-                    <option value="plant-manager">Plant Manager</option>
-                    <option value="operations-director">Operations Director</option>
-                    <option value="maintenance-manager">Maintenance Manager</option>
-                    <option value="quality-manager">Quality Manager</option>
-                    <option value="continuous-improvement">Continuous Improvement</option>
-                    <option value="consultant">Consultant</option>
-                    <option value="investor">Investor</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    htmlFor="demo-size"
-                    className="block text-sm font-medium text-text-primary mb-1.5"
-                  >
-                    Company Size
-                  </label>
-                  <select id="demo-size" className={inputClasses}>
-                    <option value="">Select size</option>
-                    <option value="1-50">1-50</option>
-                    <option value="51-200">51-200</option>
-                    <option value="201-500">201-500</option>
-                    <option value="501-1000">501-1000</option>
-                    <option value="1000+">1000+</option>
-                  </select>
-                </div>
-              </div>
+                    {status === "loading" ? "Submitting..." : "Request Demo"}
+                  </button>
 
-              {/* Primary Interest */}
-              <div>
-                <label
-                  htmlFor="demo-interest"
-                  className="block text-sm font-medium text-text-primary mb-1.5"
-                >
-                  Primary Interest
-                </label>
-                <select id="demo-interest" className={inputClasses}>
-                  <option value="">Select your primary interest</option>
-                  <option value="capture">Capturing operator knowledge</option>
-                  <option value="root-cause">Faster root cause analysis</option>
-                  <option value="expertise">
-                    Preserving expertise before retirement
-                  </option>
-                  <option value="ci">
-                    Continuous improvement infrastructure
-                  </option>
-                  <option value="insights">
-                    Oppr Insights strategic feedback
-                  </option>
-                  <option value="full">Full platform evaluation</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              {/* Additional notes */}
-              <div>
-                <label
-                  htmlFor="demo-notes"
-                  className="block text-sm font-medium text-text-primary mb-1.5"
-                >
-                  Anything specific you&apos;d like us to cover?
-                </label>
-                <textarea
-                  id="demo-notes"
-                  rows={3}
-                  className={inputClasses}
-                  placeholder="Tell us about your operation or specific needs..."
-                />
-              </div>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                className="w-full py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-primary/90 transition-all hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                Request Demo
-              </button>
-
-              <p className="text-center text-sm text-text-secondary">
-                We&apos;ll email you to schedule a time that works. No spam,
-                ever.
-              </p>
-            </form>
+                  <p className="text-center text-sm text-text-secondary">
+                    We&apos;ll email you to schedule a time that works. No spam,
+                    ever.
+                  </p>
+                </form>
+              </>
+            )}
           </div>
         </AnimatedSection>
       </div>

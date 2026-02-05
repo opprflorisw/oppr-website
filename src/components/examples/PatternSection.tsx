@@ -61,14 +61,16 @@ export function PatternSection() {
           <motion.div
             key={pattern.title}
             variants={waveChild}
-            className="bg-white rounded-2xl border border-border-light p-8 text-center"
+            className="bg-white rounded-2xl border border-border-light p-8 text-center shadow-sm hover:shadow-md hover:border-oppr-primary/20 transition-all duration-300"
           >
             <div className="flex justify-center mb-5">
-              <pattern.icon
-                size={40}
-                weight="duotone"
-                className="text-oppr-primary"
-              />
+              <div className="w-14 h-14 rounded-xl bg-oppr-primary/[0.07] flex items-center justify-center">
+                <pattern.icon
+                  size={28}
+                  weight="duotone"
+                  className="text-oppr-primary"
+                />
+              </div>
             </div>
             <h3 className="text-lg font-semibold text-text-primary mb-3">
               {pattern.title}

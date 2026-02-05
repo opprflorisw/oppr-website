@@ -114,25 +114,15 @@ function StepCard({ step, index }: { step: LoopStep; index: number }) {
           {step.description}
         </p>
 
-        {/* Expanded detail on hover */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: isHovered ? "auto" : 0,
-            opacity: isHovered ? 1 : 0,
-          }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="overflow-hidden"
+        {/* Detail — always visible */}
+        <div
+          className="pt-3 mt-1 border-t"
+          style={{ borderColor: `${step.color}15` }}
         >
-          <div
-            className="pt-3 border-t"
-            style={{ borderColor: `${step.color}15` }}
-          >
-            <p className="text-sm text-text-secondary leading-relaxed">
-              {step.detail}
-            </p>
-          </div>
-        </motion.div>
+          <p className="text-sm text-text-secondary leading-relaxed">
+            {step.detail}
+          </p>
+        </div>
       </div>
 
       {/* Arrow connector (desktop, between cards) */}

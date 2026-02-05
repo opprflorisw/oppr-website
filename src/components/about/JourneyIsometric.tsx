@@ -44,7 +44,7 @@ const milestones: Milestone[] = [
 
 export function JourneyIsometric() {
     return (
-        <div className="relative w-full max-w-[900px] mx-auto py-12 flex flex-col gap-16 md:gap-24">
+        <div className="relative w-full max-w-[900px] mx-auto py-8 flex flex-col gap-10 md:gap-14">
             {/* Decorative center connecting line */}
             <div className="hidden md:flex absolute left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 flex-col justify-between items-center z-0">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-200 to-transparent" />
@@ -52,8 +52,8 @@ export function JourneyIsometric() {
                 {[0, 1, 2, 3].map((i) => (
                     <div
                         key={i}
-                        className="w-3 h-3 border-r-2 border-b-2 border-slate-300 rotate-45 mb-24 opacity-40"
-                        style={{ marginTop: i === 0 ? '40px' : '0' }}
+                        className="w-2.5 h-2.5 border-r-2 border-b-2 border-slate-300 rotate-45 mb-14 opacity-40"
+                        style={{ marginTop: i === 0 ? '30px' : '0' }}
                     />
                 ))}
             </div>
@@ -61,38 +61,46 @@ export function JourneyIsometric() {
             {milestones.map((milestone, index) => (
                 <motion.div
                     key={milestone.year}
-                    className={`relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12 ${index % 2 === 1 ? 'md:flex-row-reverse text-center md:text-right' : 'text-center md:text-left'}`}
-                    initial={{ opacity: 0, y: 20 }}
+                    className={`relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10 group cursor-default ${index % 2 === 1 ? 'md:flex-row-reverse text-center md:text-right' : 'text-center md:text-left'}`}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -4 }}
                     viewport={{ once: true, margin: "-10% 0px" }}
-                    transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{
+                        layout: { duration: 0.3 },
+                        opacity: { duration: 0.6 },
+                        y: { duration: 0.3 }
+                    }}
                 >
                     {/* Square Icon Tile */}
-                    <div className="relative flex-shrink-0 group">
-                        <motion.div
-                            className="w-24 h-24 bg-white rounded-[24px] border border-slate-200 flex flex-col items-center justify-center p-4 shadow-xl relative overflow-hidden cursor-default transition-all duration-300 border-oppr-primary/10 shadow-slate-200/50"
+                    <div className="relative flex-shrink-0">
+                        <div
+                            className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-[20px] md:rounded-[24px] border border-slate-200 flex flex-col items-center justify-center p-3 md:p-4 shadow-lg relative overflow-hidden transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl border-oppr-primary/10 shadow-slate-200/40"
+                            style={{
+                                borderColor: undefined // will be overridden by group hover in a real project, but here we'll keep it simple
+                            }}
                         >
                             {/* Subtle background color based on milestone color */}
                             <div
                                 className="absolute inset-0 opacity-[0.03]"
                                 style={{ backgroundColor: milestone.color }}
                             />
-                            <div className="text-slate-400 text-[10px] font-bold mb-1 tracking-widest uppercase relative z-10">
+                            <div className="text-slate-400 text-[9px] md:text-[10px] font-bold mb-1 tracking-widest uppercase relative z-10">
                                 {milestone.year}
                             </div>
-                            <milestone.icon weight="duotone" size={32} style={{ color: milestone.color }} className="relative z-10" />
-                        </motion.div>
+                            <milestone.icon weight="duotone" size={28} style={{ color: milestone.color }} className="md:w-8 md:h-8 relative z-10" />
+                        </div>
 
                         {/* Soft Shadow behind tile */}
-                        <div className="absolute inset-0 bg-black/5 blur-xl rounded-[24px] translate-y-2 -z-10" />
+                        <div className="absolute inset-0 bg-black/5 blur-lg rounded-[24px] translate-y-2 -z-10 group-hover:bg-black/10 transition-colors" />
                     </div>
 
                     {/* Description Content */}
-                    <div className="flex-1 max-w-[420px]">
-                        <h4 className="text-xl font-bold text-slate-800 mb-2">
+                    <div className="flex-1 max-w-[420px] transition-colors duration-300">
+                        <h4 className="text-lg md:text-xl font-bold text-slate-800 mb-1.5 md:mb-2 group-hover:text-oppr-primary transition-colors">
                             {milestone.title}
                         </h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">
+                        <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
                             {milestone.description}
                         </p>
                     </div>

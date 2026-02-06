@@ -45,31 +45,33 @@ export function InsightsHero() {
         <div className="container-wide relative z-10">
           <AnimatedSection className="text-center max-w-[720px] mx-auto">
             <p className="text-sm font-semibold uppercase tracking-[0.05em] text-oppr-secondary mb-4">
-              Oppr Insights
+              Operational Discovery
             </p>
             <h1 className="text-display-1 font-serif text-text-primary mb-6">
-              Strategic Feedback from Your Entire Workforce
+              Turn Gut Feelings Into Structured Starting Points
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed max-w-[600px] mx-auto mb-4">
-              Gather observations, ideas, and expertise from everyone in your
-              organization&mdash;asynchronously, in any language, with AI-powered
-              analysis. Discover where the biggest opportunities are before you
-              invest in solving them. No integration required.
+              You know something needs to improve — but where exactly? Oppr
+              Insights gives everyone in your organization a voice. Capture
+              ideas, observations, and expertise asynchronously, in any
+              language. AI does the heavy lifting: structuring the unstructured,
+              surfacing patterns, and turning loose ideas into clear priorities.
+              Your starting point before execution.
             </p>
             <p className="text-sm font-semibold text-oppr-primary mb-10">
-              Step 1: Discover. Step 2: Execute.
+              Ideate. Structure. Then Execute.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/demo"
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-xl"
+                href="/insights/contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-xl focus-ring"
               >
-                Start Free Trial
+                Start with Insights
               </Link>
               <button
                 onClick={() => setVideoOpen(true)}
-                className="group inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-text-secondary hover:text-text-primary transition-all cursor-pointer"
+                className="group inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-text-secondary hover:text-text-primary transition-all cursor-pointer focus-ring rounded-lg"
               >
                 <span className="relative flex items-center justify-center w-6 h-6 rounded-full bg-text-muted/20 group-hover:bg-oppr-primary/20 transition-colors">
                   <Play size={10} weight="fill" className="text-text-secondary group-hover:text-oppr-primary ml-0.5 transition-colors" />
@@ -80,7 +82,7 @@ export function InsightsHero() {
                 onClick={() => {
                   document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-text-primary rounded-lg border-2 border-border-light hover:bg-bg-light hover:border-border-medium transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-text-primary rounded-lg border-2 border-border-light hover:bg-bg-light hover:border-border-medium transition-all focus-ring"
               >
                 See How It Works
                 <ArrowRight size={18} weight="bold" />
@@ -95,7 +97,7 @@ export function InsightsHero() {
               alt="Oppr Insights dashboard"
               width={1920}
               height={960}
-              className="w-full h-auto rounded-xl shadow-elevated"
+              className="w-full h-auto"
               priority
             />
           </AnimatedSection>

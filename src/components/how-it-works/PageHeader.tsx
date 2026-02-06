@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Play } from "@phosphor-icons/react";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { FloatingOrbs } from "@/components/shared/FloatingOrbs";
@@ -42,9 +43,10 @@ export function PageHeader() {
               The Operational Excellence Execution Platform
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed max-w-[600px] mx-auto mb-8">
-              Manufacturing is machines and people working together. We capture
-              what people know&mdash;and connect it to what machines measure.
-              Here&apos;s how.
+              This is where improvement gets executed. Three modules — LOGS,
+              IDA, and DOCS — work together in a continuous loop to capture
+              knowledge, investigate root causes, and turn validated insights
+              into living procedures. Systematic. Strategic. Controlled.
             </p>
 
             <button
@@ -56,6 +58,16 @@ export function PageHeader() {
               </span>
               Watch Video
             </button>
+
+            <p className="text-sm text-text-muted mt-4">
+              Not sure where to start?{" "}
+              <Link
+                href="/insights"
+                className="text-sm text-oppr-secondary hover:underline font-medium"
+              >
+                Not sure where to start? Try Oppr Insights &rarr;
+              </Link>
+            </p>
           </AnimatedSection>
         </div>
       </header>

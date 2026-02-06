@@ -1,33 +1,40 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { CheckCircle } from "@phosphor-icons/react";
+import { useState, useEffect, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import {
+  CheckCircle,
+  Lightbulb,
+} from "@phosphor-icons/react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
+const inputClasses =
+  "w-full border border-border-light rounded-lg px-4 py-3 focus:border-oppr-secondary focus:outline-none text-text-primary bg-white transition-colors focus-visible:ring-2 focus-visible:ring-oppr-secondary focus-visible:ring-offset-2";
+
 const checkItems = [
   {
-    bold: "20-second capture:",
-    text: "Watch an operator observation go from voice to structured data",
+    bold: "Create topics:",
+    text: "Define questions and invite contributors from any department or shift",
+  },
+  {
+    bold: "Gather feedback:",
+    text: "Voice, text, or photo input in any language — asynchronously",
   },
   {
     bold: "AI-powered analysis:",
-    text: "See IDA correlate human observations with machine data in real-time",
+    text: "Automatic theme detection, sentiment analysis, and structured reports",
   },
   {
-    bold: "Living documentation:",
-    text: "How validated insights become accessible procedures via QR codes",
-  },
-  {
-    bold: "Your specific use case:",
-    text: "We\u2019ll map the Oppr workflow to your operation\u2019s biggest challenge",
+    bold: "Talk to your data:",
+    text: "Ask follow-up questions and drill into themes conversationally",
   },
 ];
 
-const inputClasses =
-  "w-full border border-border-light rounded-lg px-4 py-3 focus:border-oppr-primary focus:outline-none text-text-primary bg-white transition-colors focus-visible:ring-2 focus-visible:ring-oppr-primary focus-visible:ring-offset-2";
+export function InsightsContactSection() {
+  const searchParams = useSearchParams();
 
-export function DemoHero() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -36,13 +43,25 @@ export function DemoHero() {
     role: "",
     companySize: "",
     interest: "",
-    notes: "",
+    message: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
+  // Pre-select interest from URL query param
+  useEffect(() => {
+    const planParam = searchParams.get("plan");
+    if (planParam && ["idea-starter", "idea-engine"].includes(planParam)) {
+      setFormData((prev) => ({ ...prev, interest: planParam }));
+    }
+  }, [searchParams]);
+
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -53,7 +72,7 @@ export function DemoHero() {
     setErrorMsg("");
 
     try {
-      const res = await fetch("/api/demo", {
+      const res = await fetch("/api/insights", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -73,35 +92,47 @@ export function DemoHero() {
         role: "",
         companySize: "",
         interest: "",
-        notes: "",
+        message: "",
       });
     } catch (err) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setErrorMsg(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again."
+      );
     }
   }
 
   return (
-    <SectionWrapper bg="light" className="pt-28">
+    <SectionWrapper bg="light" className="pt-28 pb-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        {/* Left — Info */}
+        {/* Left column — Info */}
         <AnimatedSection>
-          <p className="text-sm font-semibold uppercase tracking-[0.05em] text-oppr-secondary mb-4">
-            Book a Demo
-          </p>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-lg bg-oppr-secondary/10 flex items-center justify-center">
+              <Lightbulb
+                size={22}
+                weight="duotone"
+                className="text-oppr-secondary"
+              />
+            </div>
+            <p className="text-sm font-semibold uppercase tracking-[0.05em] text-oppr-secondary">
+              Oppr Insights
+            </p>
+          </div>
           <h1 className="text-display-1 font-serif text-text-primary mb-6">
-            See How a Single Operator Observation Becomes a Root Cause Analysis in Minutes
+            Start with Oppr Insights
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed mb-8">
-            In 30 minutes, we&apos;ll walk you through the complete loop:
-            capture an observation, watch IDA correlate it with machine data, and
-            see how DOCS turns validated insights into living
-            procedures&mdash;all tailored to your operation.
+            Ready to give your team a voice? Fill out the form and we&apos;ll
+            get in touch to set up your Oppr Insights account and help you run
+            your first discovery topic.
           </p>
 
-          {/* What You'll See */}
+          {/* What You Get */}
           <h3 className="text-lg font-semibold text-text-primary mb-4">
-            What You&apos;ll See
+            What You Get
           </h3>
           <div className="space-y-4 mb-10">
             {checkItems.map((item) => (
@@ -121,37 +152,46 @@ export function DemoHero() {
             ))}
           </div>
 
-          {/* Testimonial */}
-          <div className="border border-border-light rounded-xl p-5 bg-white">
-            <blockquote className="text-text-secondary italic leading-relaxed mb-3">
-              &ldquo;The demo showed us exactly how our operators would use it.
-              No abstract features&mdash;real workflows we could implement
-              immediately.&rdquo;
-            </blockquote>
-            <cite className="text-sm text-text-secondary not-italic">
-              &mdash; Plant Manager, Food Processing
-            </cite>
+          {/* Demo CTA */}
+          <div className="bg-white border border-border-light rounded-xl p-6 shadow-sm">
+            <p className="font-semibold text-text-primary mb-3">
+              Looking for the full platform?
+            </p>
+            <p className="text-sm text-text-secondary mb-4">
+              Oppr Insights is just the starting point. Book a demo to see LOGS,
+              IDA, and DOCS in action.
+            </p>
+            <Link
+              href="/demo"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-primary/90 transition-all hover:-translate-y-0.5 shadow-sm"
+            >
+              Book a Platform Demo
+            </Link>
           </div>
         </AnimatedSection>
 
-        {/* Right — Form */}
+        {/* Right column — Form */}
         <AnimatedSection delay={0.15}>
           <div className="bg-white border border-border-light rounded-2xl p-6 shadow-sm">
             {status === "success" ? (
               <div className="text-center py-12">
                 <div className="flex justify-center mb-4">
-                  <CheckCircle size={56} weight="fill" className="text-green-500" />
+                  <CheckCircle
+                    size={56}
+                    weight="fill"
+                    className="text-green-500"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold text-text-primary mb-2">
-                  Demo Requested!
+                  Request Sent!
                 </h3>
                 <p className="text-text-secondary mb-6">
-                  Thanks for your interest! We&apos;ll email you within one
-                  business day to schedule your demo.
+                  Thanks for your interest in Oppr Insights! We&apos;ll get back
+                  to you within one business day.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="text-oppr-primary font-medium hover:underline"
+                  className="text-oppr-secondary font-medium hover:underline"
                 >
                   Submit another request
                 </button>
@@ -160,11 +200,11 @@ export function DemoHero() {
               <>
                 <div className="text-center border-b border-border-light pb-5 mb-6">
                   <h2 className="text-xl font-semibold text-text-primary mb-1">
-                    Request Your Demo
+                    Get Started with Insights
                   </h2>
                   <p className="text-sm text-text-secondary">
-                    Fill out the form and we&apos;ll be in touch within one business
-                    day.
+                    Fill out the form and we&apos;ll be in touch within one
+                    business day.
                   </p>
                 </div>
 
@@ -173,13 +213,13 @@ export function DemoHero() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
-                        htmlFor="demo-first-name"
+                        htmlFor="insights-first-name"
                         className="block text-sm font-medium text-text-primary mb-1.5"
                       >
                         First Name <span className="text-red-500">*</span>
                       </label>
                       <input
-                        id="demo-first-name"
+                        id="insights-first-name"
                         name="firstName"
                         type="text"
                         required
@@ -192,13 +232,13 @@ export function DemoHero() {
                     </div>
                     <div>
                       <label
-                        htmlFor="demo-last-name"
+                        htmlFor="insights-last-name"
                         className="block text-sm font-medium text-text-primary mb-1.5"
                       >
                         Last Name <span className="text-red-500">*</span>
                       </label>
                       <input
-                        id="demo-last-name"
+                        id="insights-last-name"
                         name="lastName"
                         type="text"
                         required
@@ -214,13 +254,13 @@ export function DemoHero() {
                   {/* Work Email */}
                   <div>
                     <label
-                      htmlFor="demo-email"
+                      htmlFor="insights-email"
                       className="block text-sm font-medium text-text-primary mb-1.5"
                     >
                       Work Email <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="demo-email"
+                      id="insights-email"
                       name="email"
                       type="email"
                       required
@@ -235,13 +275,13 @@ export function DemoHero() {
                   {/* Company */}
                   <div>
                     <label
-                      htmlFor="demo-company"
+                      htmlFor="insights-company"
                       className="block text-sm font-medium text-text-primary mb-1.5"
                     >
                       Company <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="demo-company"
+                      id="insights-company"
                       name="company"
                       type="text"
                       required
@@ -257,13 +297,13 @@ export function DemoHero() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
-                        htmlFor="demo-role"
+                        htmlFor="insights-role"
                         className="block text-sm font-medium text-text-primary mb-1.5"
                       >
                         Your Role
                       </label>
                       <select
-                        id="demo-role"
+                        id="insights-role"
                         name="role"
                         value={formData.role}
                         onChange={handleChange}
@@ -271,10 +311,16 @@ export function DemoHero() {
                       >
                         <option value="">Select your role</option>
                         <option value="plant-manager">Plant Manager</option>
-                        <option value="operations-director">Operations Director</option>
-                        <option value="maintenance-manager">Maintenance Manager</option>
+                        <option value="operations-director">
+                          Operations Director
+                        </option>
+                        <option value="maintenance-manager">
+                          Maintenance Manager
+                        </option>
                         <option value="quality-manager">Quality Manager</option>
-                        <option value="continuous-improvement">Continuous Improvement</option>
+                        <option value="continuous-improvement">
+                          Continuous Improvement
+                        </option>
                         <option value="consultant">Consultant</option>
                         <option value="investor">Investor</option>
                         <option value="other">Other</option>
@@ -282,13 +328,13 @@ export function DemoHero() {
                     </div>
                     <div>
                       <label
-                        htmlFor="demo-size"
+                        htmlFor="insights-size"
                         className="block text-sm font-medium text-text-primary mb-1.5"
                       >
                         Company Size
                       </label>
                       <select
-                        id="demo-size"
+                        id="insights-size"
                         name="companySize"
                         value={formData.companySize}
                         onChange={handleChange}
@@ -304,58 +350,57 @@ export function DemoHero() {
                     </div>
                   </div>
 
-                  {/* Primary Interest */}
+                  {/* Interest dropdown */}
                   <div>
                     <label
-                      htmlFor="demo-interest"
+                      htmlFor="insights-interest"
                       className="block text-sm font-medium text-text-primary mb-1.5"
                     >
-                      Primary Interest
+                      I&apos;m interested in...
                     </label>
                     <select
-                      id="demo-interest"
+                      id="insights-interest"
                       name="interest"
                       value={formData.interest}
                       onChange={handleChange}
                       className={inputClasses}
                     >
-                      <option value="">Select your primary interest</option>
-                      <option value="capture">Capturing operator knowledge</option>
-                      <option value="root-cause">Faster root cause analysis</option>
-                      <option value="expertise">
-                        Preserving expertise before retirement
+                      <option value="">Select an option</option>
+                      <option value="information">
+                        General information about Oppr Insights
                       </option>
-                      <option value="ci">
-                        Continuous improvement infrastructure
+                      <option value="discuss">
+                        Discuss Oppr Insights with the team
                       </option>
-                      <option value="insights">
-                        Oppr Insights strategic feedback
+                      <option value="idea-starter">
+                        Idea Starter plan (€299/month)
                       </option>
-                      <option value="full">Full platform evaluation</option>
-                      <option value="other">Other</option>
+                      <option value="idea-engine">
+                        Idea Engine plan (€899/month)
+                      </option>
                     </select>
                   </div>
 
-                  {/* Additional notes */}
+                  {/* Message */}
                   <div>
                     <label
-                      htmlFor="demo-notes"
+                      htmlFor="insights-message"
                       className="block text-sm font-medium text-text-primary mb-1.5"
                     >
-                      Anything specific you&apos;d like us to cover?
+                      Message
                     </label>
                     <textarea
-                      id="demo-notes"
-                      name="notes"
+                      id="insights-message"
+                      name="message"
                       rows={3}
-                      value={formData.notes}
+                      value={formData.message}
                       onChange={handleChange}
                       className={inputClasses}
-                      placeholder="Tell us about your operation or specific needs…"
+                      placeholder="Tell us about your team or specific needs…"
                     />
                   </div>
 
-                  {/* Error message */}
+                  {/* Error */}
                   {status === "error" && (
                     <div className="bg-red-50 text-red-600 text-sm rounded-lg px-4 py-3">
                       {errorMsg}
@@ -366,14 +411,15 @@ export function DemoHero() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-primary/90 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus-ring"
+                    className="w-full py-3.5 text-base font-semibold text-white bg-oppr-secondary rounded-lg hover:bg-oppr-secondary/90 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus-ring"
                   >
-                    {status === "loading" ? "Submitting..." : "Request Demo"}
+                    {status === "loading"
+                      ? "Submitting..."
+                      : "Start with Insights"}
                   </button>
 
                   <p className="text-center text-sm text-text-secondary">
-                    We&apos;ll email you to schedule a time that works. No spam,
-                    ever.
+                    We&apos;ll email you within one business day. No spam, ever.
                   </p>
                 </form>
               </>

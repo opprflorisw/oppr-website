@@ -26,13 +26,13 @@ const team = [
     name: "Bogdan-Mihai Gligor",
     role: "Tech Team Lead",
     image: "/images/profile_pic/bogdan.jpg",
-    linkedin: "https://www.linkedin.com/in/bogdangligor/",
+    linkedin: "https://www.linkedin.com/in/bogdan-mihai-gligor/",
   },
   {
     name: "Duco Lindhout",
     role: "Business Developer",
     image: "/images/profile_pic/duco.jpg",
-    linkedin: "https://www.linkedin.com/in/ducolindhout/",
+    linkedin: "https://www.linkedin.com/in/duco-lindhout/",
   },
   {
     name: "Cezar Suciu",
@@ -44,13 +44,13 @@ const team = [
     name: "Anca Giurgiu",
     role: "Full-Stack Developer",
     image: "/images/profile_pic/anca-v2.jpg",
-    linkedin: "https://www.linkedin.com/in/ancagiurgiu/",
+    linkedin: "https://www.linkedin.com/in/anca-giurgiu-5862bb244/",
   },
   {
     name: "Mara Irina Mesesan",
     role: "Full-Stack Developer",
     image: "/images/profile_pic/mara.jpg",
-    linkedin: "https://www.linkedin.com/in/mara-irina-mesesan/",
+    linkedin: "https://www.linkedin.com/in/mara-irina-mesesan-a014b2252/",
   },
 ];
 
@@ -84,7 +84,8 @@ export function FoundersSection() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white text-oppr-primary flex items-center justify-center hover:bg-oppr-secondary hover:text-white transition-colors duration-300"
+                    aria-label={`View ${member.name} on LinkedIn`}
+                    className="w-10 h-10 rounded-full bg-white text-oppr-primary flex items-center justify-center hover:bg-oppr-secondary hover:text-white transition-colors duration-300 focus-ring"
                   >
                     <LinkedinLogo size={20} weight="fill" />
                   </a>

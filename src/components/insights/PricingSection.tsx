@@ -6,11 +6,11 @@ import { motion, useInView } from "framer-motion";
 import { Check, ArrowRight } from "@phosphor-icons/react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { staggerContainer, waveChild } from "@/lib/animations";
 
 interface PricingTier {
   name: string;
+  tagline: string;
   description: string;
   price: string;
   features: string[];
@@ -20,66 +20,51 @@ interface PricingTier {
 
 const tiers: PricingTier[] = [
   {
-    name: "Starter",
+    name: "Idea Starter",
+    tagline: "Explore structured ideation",
     description:
-      "Get hands-on with capturing knowledge and improving operations at no cost.",
-    price: "\u20AC0/month",
+      "Perfect for teams beginning to formalize their improvement thinking. Capture initial ideas, run focused discovery topics, and experience how AI transforms scattered observations into clear starting points.",
+    price: "\u20AC299/month",
     features: [
-      "Up to 3 users",
-      "Up to 50 topics/feedbacks/insights per month",
-      "Text/voice notes/photos",
-      "Basic AI-generated insights",
-      "User dashboard",
+      "Run focused discovery topics with your team",
+      "AI-powered structuring of voice, text, and photo input",
+      "Any language \u2014 auto-translated",
+      "AI-generated theme detection and summaries",
+      "Dashboard to track and review structured ideas",
     ],
-    buttonLabel: "Start Free Trial",
-    buttonHref: "/demo",
+    buttonLabel: "Get Started",
+    buttonHref: "/insights/contact?plan=idea-starter",
   },
   {
-    name: "Growth",
+    name: "Idea Engine",
+    tagline: "Build your ideation rhythm",
     description:
-      "All Starter features, plus enhanced capacity and deeper AI insights.",
-    price: "\u20AC499/month",
-    features: [
-      "Up to 25 users",
-      "Up to 500 topics/feedbacks/insights per month",
-      "Advanced AI-generated insights",
-      "Sentiment indicators",
-      "IDA natural language query",
-      "CSV export",
-    ],
-    buttonLabel: "Choose Growth",
-    buttonHref: "/demo",
-  },
-  {
-    name: "Scale",
-    description:
-      "All Growth features, plus advanced AI and integration into Oppr ecosystem.",
+      "For organizations making structured ideation a core part of how they operate. Run multiple concurrent topics across departments and regions. Build a continuous pipeline of AI-structured ideas. The perfect foundation for downstream execution with the Oppr core platform.",
     price: "\u20AC899/month",
     features: [
-      "Up to 100 users",
-      "Up to 1500 topics/feedbacks/insights per month",
-      "Pattern identification & contradiction analysis",
-      "Full IDA with deeper research",
-      "AI-drafted SOPs from insights",
-      "Full API access",
-      "LOGS/DOCS integration",
+      "Everything in Idea Starter",
+      "Run concurrent topics across departments and regions",
+      "Advanced pattern identification across multiple topics",
+      "Build a continuous pipeline of structured ideas",
+      "Full integration readiness with the Oppr execution platform",
+      "API access for connecting to your existing workflows",
     ],
-    buttonLabel: "Get Scale",
-    buttonHref: "/demo",
+    buttonLabel: "Scale Your Ideation",
+    buttonHref: "/insights/contact?plan=idea-engine",
   },
 ];
 
 export function PricingSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(0);
 
   return (
     <SectionWrapper bg="light">
       <SectionHeader
         label="Pricing"
         title="Plans for Every Stage"
-        subtitle="Start free, scale as you grow. No credit card required to try."
+        subtitle="Start small, build momentum. Choose the pace that fits your organization."
       />
 
       <motion.div
@@ -87,7 +72,7 @@ export function PricingSection() {
         variants={staggerContainer(0.15)}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-stretch"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto items-stretch"
       >
         {tiers.map((tier, i) => {
           const isSelected = selected === i;
@@ -108,18 +93,16 @@ export function PricingSection() {
                   : "border-2 border-border-light hover:shadow-elevated"
               }`}
             >
-              {/* "Most Popular" badge — always on Growth card, color toggles */}
-              {i === 1 && (
-                <span
-                  className={`absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-semibold uppercase tracking-wider px-4 py-1.5 rounded-full whitespace-nowrap transition-colors duration-200 ${
-                    selected === 1
-                      ? "bg-oppr-primary text-white"
-                      : "bg-gray-200 text-gray-400"
-                  }`}
-                >
-                  Most Popular
-                </span>
-              )}
+              {/* Tagline badge */}
+              <span
+                className={`inline-block self-start text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 transition-colors duration-200 ${
+                  isSelected
+                    ? "bg-oppr-primary/10 text-oppr-primary"
+                    : "bg-bg-light text-text-muted"
+                }`}
+              >
+                {tier.tagline}
+              </span>
 
               <h3 className="text-xl font-semibold text-text-primary mb-2">
                 {tier.name}
@@ -158,33 +141,16 @@ export function PricingSection() {
                 }`}
               >
                 {tier.buttonLabel}
+                <ArrowRight
+                  size={16}
+                  weight="bold"
+                  className="inline-block ml-2"
+                />
               </Link>
             </motion.div>
           );
         })}
       </motion.div>
-
-      {/* Enterprise bar */}
-      <AnimatedSection delay={0.3}>
-        <div className="bg-bg-light rounded-xl p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div>
-            <h3 className="text-xl font-semibold text-text-primary mb-1">
-              Enterprise
-            </h3>
-            <p className="text-text-secondary">
-              Custom solutions, unlimited scale, and dedicated support for
-              organizations with advanced needs.
-            </p>
-          </div>
-          <Link
-            href="/demo"
-            className="inline-flex items-center gap-2 px-7 py-3 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-xl shrink-0"
-          >
-            Contact Sales
-            <ArrowRight size={18} weight="bold" />
-          </Link>
-        </div>
-      </AnimatedSection>
     </SectionWrapper>
   );
 }

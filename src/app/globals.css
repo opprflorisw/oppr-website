@@ -125,6 +125,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
+    text-wrap: balance;
   }
 
   h1, h2 {
@@ -343,6 +344,30 @@
     padding-top: var(--spacing-section);
     padding-bottom: var(--spacing-section);
   }
+
+  /* ---- Focus Ring (Accessibility) ---- */
+  .focus-ring {
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oppr-primary;
+  }
+
+  /* ---- Tabular Numbers ---- */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- Skip to Content ---- */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-oppr-primary focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none;
+  }
+
+  /* ---- Path Colors (Two-path system) ---- */
+  .path-a-glow {
+    box-shadow: 0 10px 30px rgba(30, 58, 95, 0.12);
+  }
+
+  .path-b-glow {
+    box-shadow: 0 10px 30px rgba(224, 122, 61, 0.12);
+  }
 }
 
 /* ============================================
@@ -352,6 +377,12 @@
 @keyframes meshShift {
   0% { transform: translate(0, 0) scale(1); }
   100% { transform: translate(30px, -20px) scale(1.05); }
+}
+
+@keyframes pulse-soft {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.35); opacity: 0.15; }
+  100% { transform: scale(1); opacity: 0.6; }
 }
 
 @keyframes bounce-gentle {

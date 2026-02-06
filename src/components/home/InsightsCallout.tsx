@@ -50,15 +50,14 @@ export function InsightsCallout() {
                 </Link>
 
                 <Link
-                  href="/demo"
+                  href="/insights"
                   className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-oppr-secondary/10 to-amber-50 border border-oppr-secondary/20 hover:border-oppr-secondary/40 transition-all"
                 >
                   <Sparkle size={16} weight="fill" className="text-oppr-secondary" />
-                  <span className="text-sm font-semibold text-text-primary">
-                    Start for{" "}
-                    <span className="text-gradient-warm font-bold">Free</span>
+                  <span className="text-sm font-semibold text-oppr-secondary">
+                    Start with Insights
                   </span>
-                  <span className="text-xs text-text-muted">&mdash; no credit card needed</span>
+                  <ArrowRight size={14} weight="bold" className="text-oppr-secondary" />
                 </Link>
               </div>
             </div>

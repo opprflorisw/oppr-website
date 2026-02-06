@@ -110,29 +110,43 @@ export function HeroSection() {
                 properly. Until now.
               </motion.p>
 
-              <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/demo"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg border-2 border-oppr-primary hover:bg-oppr-dark hover:border-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-glow-primary"
-                >
-                  Book a Demo
-                </Link>
-                <button
-                  onClick={() => setVideoOpen(true)}
-                  className="group inline-flex items-center gap-2 px-5 py-3 text-base font-semibold text-text-secondary hover:text-oppr-primary transition-all cursor-pointer"
-                >
-                  <span className="relative flex items-center justify-center w-10 h-10 rounded-full bg-text-muted/10 group-hover:bg-oppr-primary/10 transition-colors">
-                    <Play size={16} weight="fill" className="text-text-secondary group-hover:text-oppr-primary ml-0.5 transition-colors" />
-                  </span>
-                  Watch Video
-                </button>
-                <Link
-                  href="/how-it-works"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary rounded-lg border-2 border-transparent hover:bg-bg-subtle transition-all"
-                >
-                  See How It Works
-                  <ArrowRight size={18} weight="bold" />
-                </Link>
+              <motion.div variants={fadeUp} className="flex flex-col gap-4">
+                {/* Row 1: Primary + Secondary CTA buttons */}
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/demo"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg border-2 border-oppr-primary hover:bg-oppr-dark hover:border-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-glow-primary focus-ring"
+                  >
+                    Book a Demo
+                  </Link>
+                  <Link
+                    href="/insights"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-secondary rounded-lg border-2 border-oppr-secondary hover:brightness-110 hover:border-oppr-secondary transition-all hover:-translate-y-0.5 hover:shadow-glow-secondary focus-ring"
+                  >
+                    Start with Insights
+                  </Link>
+                </div>
+
+                {/* Row 2: Watch Video + See How It Works */}
+                <div className="flex flex-wrap items-center gap-4">
+                  <button
+                    onClick={() => setVideoOpen(true)}
+                    aria-label="Watch product video"
+                    className="group inline-flex items-center gap-2 px-5 py-3 text-base font-semibold text-text-secondary hover:text-oppr-primary transition-all cursor-pointer focus-ring"
+                  >
+                    <span className="relative flex items-center justify-center w-10 h-10 rounded-full bg-text-muted/10 group-hover:bg-oppr-primary/10 transition-colors">
+                      <Play size={16} weight="fill" className="text-text-secondary group-hover:text-oppr-primary ml-0.5 transition-colors" />
+                    </span>
+                    Watch Video
+                  </button>
+                  <Link
+                    href="/how-it-works"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary rounded-lg border-2 border-transparent hover:bg-bg-subtle transition-all focus-ring"
+                  >
+                    See How It Works
+                    <ArrowRight size={18} weight="bold" />
+                  </Link>
+                </div>
               </motion.div>
             </motion.div>
 

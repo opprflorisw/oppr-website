@@ -1,6 +1,15 @@
 export const navLinks = [
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Oppr Insights", href: "/insights" },
+  {
+    label: "Platform",
+    href: "/how-it-works",
+    dropdown: [
+      { label: "How It Works", href: "/how-it-works" },
+      { label: "LOGS", href: "/how-it-works#logs" },
+      { label: "IDA", href: "/how-it-works#ida" },
+      { label: "DOCS", href: "/how-it-works#docs" },
+    ],
+  },
+  { label: "Insights", href: "/insights", highlighted: true, badge: "Discovery" },
   {
     label: "Solutions",
     href: "/solutions",
@@ -8,12 +17,18 @@ export const navLinks = [
       { label: "For SME Manufacturers", href: "/solutions/sme" },
       { label: "For Enterprise", href: "/solutions/enterprise" },
       { label: "For Consultants", href: "/solutions/consultants" },
-      // { label: "For Private Equity", href: "/solutions/private-equity" },
-      // { label: "For Equipment OEMs", href: "/solutions/oem" },
     ],
   },
-  { label: "Examples", href: "/examples" },
-  { label: "Blog", href: "/blog" },
+  {
+    label: "Resources",
+    href: "/examples",
+    dropdown: [
+      { label: "Examples", href: "/examples" },
+      { label: "Blog", href: "/blog" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Operational Intelligence Matrix", href: "/operational-intelligence-matrix" },
+    ],
+  },
   { label: "About", href: "/about" },
 ];
 
@@ -29,8 +44,6 @@ export const footerLinks = {
     { label: "For SME Manufacturers", href: "/solutions/sme" },
     { label: "For Enterprise", href: "/solutions/enterprise" },
     { label: "For Consultants", href: "/solutions/consultants" },
-    // { label: "For Private Equity", href: "/solutions/private-equity" },
-    // { label: "For Equipment OEMs", href: "/solutions/oem" },
   ],
   resources: [
     { label: "Examples", href: "/examples" },

@@ -11,6 +11,7 @@ import { ChallengeSection } from "@/components/solutions/shared/ChallengeSection
 import { ConsultantValueSection } from "@/components/solutions/consultants/ConsultantValueSection";
 import { ConsultantDifferentiationSection } from "@/components/solutions/consultants/ConsultantDifferentiationSection";
 import { SolutionCTA } from "@/components/solutions/shared/SolutionCTA";
+import { NextStepBanner } from "@/components/shared/NextStepBanner";
 
 const challenges = [
   {
@@ -51,6 +52,7 @@ export default function ConsultantsSolutionPage() {
       <ConsultantValueSection />
       <ConsultantDifferentiationSection />
       <SolutionCTA text="Explore a Partnership" />
+      <NextStepBanner label="Offer clients a starting point" title="Recommend Oppr Insights" href="/insights" variant="secondary" />
     </>
   );
 }

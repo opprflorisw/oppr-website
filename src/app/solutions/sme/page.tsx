@@ -11,6 +11,7 @@ import { ChallengeSection } from "@/components/solutions/shared/ChallengeSection
 import { SMEValueSection } from "@/components/solutions/sme/SMEValueSection";
 import { SMEEconomicsSection } from "@/components/solutions/sme/SMEEconomicsSection";
 import { SolutionCTA } from "@/components/solutions/shared/SolutionCTA";
+import { NextStepBanner } from "@/components/shared/NextStepBanner";
 
 const challenges = [
   {
@@ -51,6 +52,7 @@ export default function SMESolutionPage() {
       <SMEValueSection />
       <SMEEconomicsSection />
       <SolutionCTA text="See How It Works for SMEs" />
+      <NextStepBanner label="Not sure yet?" title="Start with Oppr Insights" href="/insights" variant="secondary" />
     </>
   );
 }

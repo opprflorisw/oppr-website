@@ -30,25 +30,26 @@ export function InsightsCTA() {
       <div className="container-wide relative z-10">
         <AnimatedSection className="text-center max-w-[600px] mx-auto">
           <h2 className="text-display-2 font-serif text-white mb-4">
-            Start Capturing Your Team&apos;s Knowledge Today
+            Ready to give your team a voice?
           </h2>
           <p className="text-lg text-white/75 leading-relaxed mb-8">
-            Don&apos;t let critical operational expertise walk out the door. Try
-            Oppr Insights free&mdash;no credit card required.
+            Your team already senses what needs to change. Oppr Insights turns
+            those gut feelings into structured starting points — so you know
+            exactly where to focus next.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary bg-white rounded-lg border-2 border-white hover:bg-oppr-light transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/10"
+              href="/insights/contact"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary bg-white rounded-lg border-2 border-white hover:bg-oppr-light transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/10 focus-ring"
             >
-              Start Free Trial
+              Start with Insights
             </Link>
             <Link
-              href="/demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-lg border-2 border-white/20 hover:bg-white/10 hover:border-white/30 transition-all glass-dark"
+              href="/insights/contact"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-lg border-2 border-white/20 hover:bg-white/10 hover:border-white/30 transition-all glass-dark focus-ring"
             >
-              Contact Sales
+              Contact Us
               <ArrowRight size={18} weight="bold" />
             </Link>
           </div>

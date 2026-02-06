@@ -15,7 +15,7 @@ const faqs = [
   {
     question: "Is there any cost or commitment?",
     answer:
-      "The demo is completely free with no obligation. We'll only move forward if there's a clear fit.",
+      "The demo comes with no obligation. We'll only move forward if there's a clear fit.",
   },
   {
     question: "What if I'm just exploring?",

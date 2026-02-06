@@ -12,32 +12,40 @@ import {
 } from "@phosphor-icons/react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
-import { staggerContainer, EASE_SNAP } from "@/lib/animations";
+import { staggerContainer, EASE_SNAP, EASE_SMOOTH_OUT } from "@/lib/animations";
 
 const audiences = [
   {
     icon: Wrench,
     title: "Operators & Technicians",
-    text: "Speak it. Snap it. Done. Log observations in 20 seconds — in any language — without stopping work. Your knowledge finally makes it into the system, and the system gives you answers back when you need them.",
+    text: "Speak it. Snap it. Done. Log observations in 20 seconds \u2014 in any language \u2014 without stopping work. Your knowledge finally makes it into the system, and the system gives you answers back when you need them.",
     accentColor: "from-oppr-secondary/20 to-oppr-secondary/5",
+    borderAccent: "#E07A3D",
+    recommendedPath: { label: "See LOGS", href: "/how-it-works#logs" },
   },
   {
     icon: Gear,
     title: "Engineers & Maintenance",
-    text: "Find root causes in minutes, not weeks. IDA correlates operator observations with machine data so you stop guessing and start fixing. Every shift handover, every near-miss, every \"that sounds different\" — already captured and searchable.",
+    text: "Find root causes in minutes, not weeks. IDA correlates operator observations with machine data so you stop guessing and start fixing. Every shift handover, every near-miss, every \"that sounds different\" \u2014 already captured and searchable.",
     accentColor: "from-ida/20 to-ida/5",
+    borderAccent: "#3B82F6",
+    recommendedPath: { label: "See IDA", href: "/how-it-works#ida" },
   },
   {
     icon: ChartBar,
     title: "Plant Managers & CI Leaders",
-    text: "See what's really happening on the floor — not just what the dashboards show. Turn Gemba walks into continuous data streams. Track whether improvements actually stick. PDCA cycles that finally cycle.",
+    text: "See what\u2019s really happening on the floor \u2014 not just what the dashboards show. Oppr Insights lets your team voice what they see, and AI turns those observations into structured priorities. The starting point for improvements that actually stick.",
     accentColor: "from-docs/20 to-docs/5",
+    borderAccent: "#10B981",
+    recommendedPath: { label: "Start with Insights", href: "/insights" },
   },
   {
     icon: Buildings,
     title: "Directors & VP Operations",
-    text: "De-risk your operation. Knowledge no longer walks out the door when experts retire. Cross-site patterns become visible. Improvement ROI is measurable. The human data layer becomes a strategic asset — not a blind spot.",
+    text: "De-risk your operation. Knowledge no longer walks out the door when experts retire. Cross-site patterns become visible. Improvement ROI is measurable. The human data layer becomes a strategic asset \u2014 not a blind spot.",
     accentColor: "from-oppr-primary/20 to-oppr-primary/5",
+    borderAccent: "#1E3A5F",
+    recommendedPath: { label: "Book a Demo", href: "/demo" },
   },
 ];
 
@@ -58,9 +66,9 @@ export function AudiencesSection() {
   return (
     <SectionWrapper bg="white">
       <SectionHeader
-        label="Who It's For"
+        label="Who It&apos;s For"
         title="Built for Every Role on the Floor"
-        subtitle="Process or discrete. SME or enterprise. It doesn't matter. If your operation runs on people and machines, Oppr adds the layer that connects them."
+        subtitle="Process or discrete. SME or enterprise. It doesn&apos;t matter. If your operation runs on people and machines, Oppr adds the layer that connects them."
       />
 
       <motion.div
@@ -71,8 +79,16 @@ export function AudiencesSection() {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
       >
         {audiences.map((a) => (
-          <motion.div key={a.title} variants={waveChild}>
-            <div className="flex flex-col p-6 bg-white rounded-2xl border border-border-light h-full">
+          <motion.div
+            key={a.title}
+            variants={waveChild}
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.3, ease: EASE_SMOOTH_OUT }}
+          >
+            <div
+              className="flex flex-col p-6 bg-white rounded-2xl border border-border-light h-full hover:shadow-elevated transition-all duration-300"
+              style={{ borderLeft: `3px solid ${a.borderAccent}` }}
+            >
               <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${a.accentColor} flex items-center justify-center mb-4`}>
                 <a.icon
                   size={22}
@@ -86,6 +102,12 @@ export function AudiencesSection() {
               <p className="text-sm text-text-secondary leading-relaxed flex-1">
                 {a.text}
               </p>
+              <Link
+                href={a.recommendedPath.href}
+                className="text-sm font-semibold text-oppr-primary hover:underline mt-3 pt-3 border-t border-border-light focus-ring rounded"
+              >
+                {a.recommendedPath.label} &rarr;
+              </Link>
             </div>
           </motion.div>
         ))}
@@ -95,15 +117,15 @@ export function AudiencesSection() {
       <div className="flex flex-wrap justify-center gap-4 mt-12">
         <Link
           href="/examples"
-          className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg border-2 border-oppr-primary hover:bg-oppr-dark hover:border-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-glow-primary"
+          className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg border-2 border-oppr-primary hover:bg-oppr-dark hover:border-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-glow-primary focus-ring"
         >
           See Use Cases
         </Link>
         <Link
-          href="/how-it-works"
-          className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary rounded-lg border-2 border-transparent hover:bg-bg-subtle transition-all"
+          href="/insights"
+          className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-secondary rounded-lg border-2 border-oppr-secondary/30 hover:bg-oppr-secondary/5 transition-all hover:-translate-y-0.5 focus-ring"
         >
-          See How It Works
+          Start with Insights
           <ArrowRight size={18} weight="bold" />
         </Link>
       </div>

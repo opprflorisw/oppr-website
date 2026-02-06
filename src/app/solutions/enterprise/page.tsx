@@ -11,6 +11,7 @@ import { ChallengeSection } from "@/components/solutions/shared/ChallengeSection
 import { EnterpriseValueSection } from "@/components/solutions/enterprise/EnterpriseValueSection";
 import { EnterpriseUseCasesSection } from "@/components/solutions/enterprise/EnterpriseUseCasesSection";
 import { SolutionCTA } from "@/components/solutions/shared/SolutionCTA";
+import { NextStepBanner } from "@/components/shared/NextStepBanner";
 
 const challenges = [
   {
@@ -51,6 +52,7 @@ export default function EnterpriseSolutionPage() {
       <EnterpriseValueSection />
       <EnterpriseUseCasesSection />
       <SolutionCTA text="Request an Enterprise Evaluation" />
+      <NextStepBanner label="Want to explore first?" title="Start with Oppr Insights" href="/insights" variant="secondary" />
     </>
   );
 }

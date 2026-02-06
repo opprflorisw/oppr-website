@@ -55,15 +55,15 @@ export function CTASection() {
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <Link
               href="/demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary bg-white rounded-lg border-2 border-white hover:bg-oppr-light transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/10"
+              className="focus-ring inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary bg-white rounded-lg border-2 border-white hover:bg-oppr-light transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/10"
             >
               Book a Demo
             </Link>
             <Link
-              href="/how-it-works"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-lg border-2 border-white/20 hover:bg-white/10 hover:border-white/30 transition-all glass-dark"
+              href="/insights"
+              className="focus-ring inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-lg border-2 border-white/20 hover:bg-white/10 hover:border-white/30 transition-all glass-dark"
             >
-              Learn More
+              Start with Insights
               <ArrowRight size={18} weight="bold" />
             </Link>
           </div>

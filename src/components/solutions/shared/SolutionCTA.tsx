@@ -41,10 +41,16 @@ export function SolutionCTA({ text, href = "/demo" }: SolutionCTAProps) {
           </p>
           <Link
             href={href}
-            className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-oppr-primary bg-white rounded-lg hover:bg-white/90 transition-all hover:-translate-y-0.5 hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-oppr-primary bg-white rounded-lg hover:bg-white/90 transition-all hover:-translate-y-0.5 hover:shadow-xl focus-ring"
           >
             {text}
             <ArrowRight size={18} weight="bold" />
+          </Link>
+          <Link
+            href="/insights"
+            className="text-sm text-oppr-secondary hover:underline font-medium mt-4 block focus-ring rounded"
+          >
+            Or start with Oppr Insights &rarr;
           </Link>
         </AnimatedSection>
       </div>

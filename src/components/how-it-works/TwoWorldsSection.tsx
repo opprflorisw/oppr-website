@@ -59,8 +59,10 @@ interface ModuleCard {
   subtitle: string;
   icon: Icon;
   color: string;
+  hex: string;
   borderColor: string;
   bgColor: string;
+  intro: string;
   bullets: string[];
 }
 
@@ -70,12 +72,14 @@ const moduleCards: ModuleCard[] = [
     subtitle: "with LOGS",
     icon: Microphone,
     color: "text-[#E07A3D]",
+    hex: "#E07A3D",
     borderColor: "border-[#E07A3D]/30",
     bgColor: "bg-[#E07A3D]/5",
+    intro: "The knowledge your team carries — captured in seconds",
     bullets: [
-      "Never lose an observation again",
-      "Every language, zero barriers",
-      "20 seconds — no workflow disruption",
+      "Voice, photo, or text — any language",
+      "AI structures every observation automatically",
+      "Zero disruption to the workflow",
     ],
   },
   {
@@ -83,12 +87,14 @@ const moduleCards: ModuleCard[] = [
     subtitle: "with IDA",
     icon: MagnifyingGlass,
     color: "text-[#3B82F6]",
+    hex: "#3B82F6",
     borderColor: "border-[#3B82F6]/30",
     bgColor: "bg-[#3B82F6]/5",
+    intro: "Turn scattered observations into confirmed root causes",
     bullets: [
-      "See what data alone can't show",
-      "Patterns found automatically",
-      "Root cause in minutes, not weeks",
+      "Ask questions in plain language",
+      "Correlates human + machine data",
+      "Patterns surface before they become problems",
     ],
   },
   {
@@ -96,11 +102,13 @@ const moduleCards: ModuleCard[] = [
     subtitle: "with DOCS",
     icon: BookOpen,
     color: "text-[#10B981]",
+    hex: "#10B981",
     borderColor: "border-[#10B981]/30",
     bgColor: "bg-[#10B981]/5",
+    intro: "Insights become living procedures — at the point of work",
     bullets: [
-      "Procedures that stay current",
-      "Right info at the machine, via QR",
+      "Procedures update from validated findings",
+      "Accessible via QR at the machine",
       "Knowledge that outlasts any employee",
     ],
   },
@@ -108,11 +116,57 @@ const moduleCards: ModuleCard[] = [
 
 const frameCaptions = [
   "Both sides generate data. Neither side sees the other.",
-  "Oppr connects what machines measure with what people know.",
-  "One closed loop. Capture, analyze, implement — continuously.",
+  "The execution platform connects what machines measure with what people know.",
+  "One closed loop. Capture, analyze, implement — continuously improving.",
 ];
 
 const FRAME_DURATION = 5500;
+
+/* ──────────────────────────── SVG Loop Geometry ──────────────────────────── */
+
+const LOOP_VB = 500;
+const LOOP_CX = LOOP_VB / 2;
+const LOOP_CY = 220;
+const LOOP_R = 130;
+const LOOP_NODE_R = 38;
+
+const toRad = (deg: number) => (deg * Math.PI) / 180;
+
+function loopPoint(angleDeg: number) {
+  return {
+    x: LOOP_CX + LOOP_R * Math.sin(toRad(angleDeg)),
+    y: LOOP_CY - LOOP_R * Math.cos(toRad(angleDeg)),
+  };
+}
+
+const loopNodeAngles = [0, 120, 240];
+const loopNodePositions = loopNodeAngles.map(loopPoint);
+
+const LOOP_GAP = Math.ceil((Math.asin(LOOP_NODE_R / LOOP_R) * 180) / Math.PI) + 4;
+
+function loopArcPath(fromAngle: number, toAngle: number): string {
+  const start = loopPoint(fromAngle + LOOP_GAP);
+  const end = loopPoint(toAngle - LOOP_GAP);
+  return `M ${start.x} ${start.y} A ${LOOP_R} ${LOOP_R} 0 0 1 ${end.x} ${end.y}`;
+}
+
+const loopArrowPaths = [
+  loopArcPath(0, 120),
+  loopArcPath(120, 240),
+  loopArcPath(240, 360),
+];
+
+function loopArrowheadAt(toAngle: number) {
+  const angle = toAngle - LOOP_GAP;
+  const pos = loopPoint(angle);
+  return { ...pos, rotation: angle };
+}
+
+const loopArrowheads = [
+  loopArrowheadAt(120),
+  loopArrowheadAt(240),
+  loopArrowheadAt(360),
+];
 
 /* ──────────────────────────── Floating Pill ──────────────────────────── */
 
@@ -282,24 +336,132 @@ function TwoWorldsAnimation() {
                 </div>
               </motion.div>
 
-              {/* Center bridge visual */}
-              <motion.div
-                className="flex flex-col items-center gap-3"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.35 }}
-              >
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-oppr-primary/10 border-2 border-oppr-primary/30 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-lg md:text-xl font-bold text-oppr-primary tracking-wider">
-                      OPPR
+              {/* Circular loop SVG — LOGS / IDA / DOCS */}
+              <div className="flex flex-col items-center mt-2">
+                <svg
+                  viewBox={`0 0 ${LOOP_VB} ${LOOP_VB}`}
+                  className="w-[220px] h-[220px] md:w-[280px] md:h-[280px]"
+                >
+                  {/* Dashed guide circle */}
+                  <motion.circle
+                    cx={LOOP_CX}
+                    cy={LOOP_CY}
+                    r={LOOP_R}
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth={1.5}
+                    strokeDasharray="4 12"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.4 }}
+                  />
+
+                  {/* Arc paths */}
+                  {loopArrowPaths.map((d, i) => (
+                    <motion.path
+                      key={`arc-${i}`}
+                      d={d}
+                      fill="none"
+                      stroke={moduleCards[i].hex}
+                      strokeWidth={2.5}
+                      strokeLinecap="round"
+                      strokeOpacity={0.35}
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ delay: 0.6 + i * 0.1, duration: 0.8, ease: "easeOut" }}
+                    />
+                  ))}
+
+                  {/* Arrowheads */}
+                  {loopArrowheads.map((ah, i) => (
+                    <motion.polygon
+                      key={`arrow-${i}`}
+                      points="-6,-4 6,0 -6,4"
+                      fill={moduleCards[i].hex}
+                      fillOpacity={0.5}
+                      transform={`translate(${ah.x}, ${ah.y}) rotate(${ah.rotation})`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.9, duration: 0.3 }}
+                    />
+                  ))}
+
+                  {/* Node circles + labels */}
+                  {loopNodePositions.map((pos, i) => {
+                    const card = moduleCards[i];
+                    const CircleIcon = card.icon;
+                    return (
+                      <g key={card.title}>
+                        {/* White circle bg */}
+                        <motion.circle
+                          cx={pos.x}
+                          cy={pos.y}
+                          r={LOOP_NODE_R}
+                          fill="white"
+                          stroke={card.hex}
+                          strokeWidth={2.5}
+                          strokeOpacity={0.4}
+                          initial={{ opacity: 0, r: LOOP_NODE_R * 0.85 }}
+                          animate={{ opacity: 1, r: LOOP_NODE_R }}
+                          transition={{ delay: 0.25 + i * 0.15, duration: 0.45, ease: "easeOut" }}
+                        />
+                        {/* Icon via foreignObject */}
+                        <motion.foreignObject
+                          x={pos.x - LOOP_NODE_R}
+                          y={pos.y - LOOP_NODE_R}
+                          width={LOOP_NODE_R * 2}
+                          height={LOOP_NODE_R * 2}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.3 + i * 0.15, duration: 0.35 }}
+                        >
+                          <div className="w-full h-full flex items-center justify-center">
+                            <CircleIcon size={22} weight="duotone" style={{ color: card.hex }} />
+                          </div>
+                        </motion.foreignObject>
+                        {/* Label below circle */}
+                        <motion.text
+                          x={pos.x}
+                          y={pos.y + LOOP_NODE_R + 18}
+                          textAnchor="middle"
+                          fill={card.hex}
+                          fontSize={13}
+                          fontWeight={700}
+                          letterSpacing="0.08em"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.35 + i * 0.15, duration: 0.35 }}
+                        >
+                          {card.subtitle.replace("with ", "").toUpperCase()}
+                        </motion.text>
+                      </g>
+                    );
+                  })}
+
+                  {/* Center icon */}
+                  <motion.foreignObject
+                    x={LOOP_CX - 12}
+                    y={LOOP_CY - 12}
+                    width={24}
+                    height={24}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.3 }}
+                    transition={{ delay: 0.9, duration: 0.3 }}
+                  >
+                    <div className="w-full h-full flex items-center justify-center">
+                      <ArrowsClockwise size={20} weight="bold" className="text-oppr-primary" />
                     </div>
-                  </div>
-                </div>
-                <p className="text-sm md:text-base text-text-secondary text-center max-w-[280px]">
-                  Connecting machine data with human knowledge
-                </p>
-              </motion.div>
+                  </motion.foreignObject>
+                </svg>
+                <motion.p
+                  className="text-xs md:text-sm text-text-secondary text-center max-w-[340px] -mt-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.9, duration: 0.4 }}
+                >
+                  Your execution platform — connecting both worlds into operational intelligence
+                </motion.p>
+              </div>
 
               {/* Faded pills in background */}
               <div className="absolute top-10 left-0 bottom-0 opacity-20" style={{ width: "35%" }}>
@@ -359,13 +521,13 @@ function TwoWorldsAnimation() {
               </motion.div>
 
               {/* Three module cards */}
-              <div className="flex flex-col md:flex-row items-stretch gap-3 md:gap-4 w-full max-w-[720px] mt-8">
+              <div className="flex flex-col md:flex-row items-stretch gap-3 md:gap-4 w-full max-w-[760px] mt-8">
                 {moduleCards.map((card, i) => {
                   const CardIcon = card.icon;
                   return (
                     <motion.div
                       key={card.title}
-                      className={`flex-1 ${card.bgColor} border-2 ${card.borderColor} rounded-xl p-3 md:p-4`}
+                      className={`flex-1 ${card.bgColor} border-2 ${card.borderColor} rounded-xl p-4 md:p-5`}
                       initial={{ opacity: 0, y: 12, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{
@@ -376,7 +538,7 @@ function TwoWorldsAnimation() {
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <CardIcon
-                          size={20}
+                          size={22}
                           weight="duotone"
                           className={card.color}
                         />
@@ -389,13 +551,16 @@ function TwoWorldsAnimation() {
                           </p>
                         </div>
                       </div>
+                      <p className="text-[11px] md:text-xs text-text-secondary font-medium mb-2">
+                        {card.intro}
+                      </p>
                       <ul className="space-y-1">
                         {card.bullets.map((bullet, j) => (
                           <li
                             key={j}
-                            className="text-[10px] md:text-[11px] text-text-secondary flex items-start gap-1.5"
+                            className="text-[11px] md:text-xs text-text-secondary flex items-start gap-1.5"
                           >
-                            <span className={`mt-1 w-1 h-1 rounded-full ${card.color.replace("text-", "bg-")} shrink-0`} />
+                            <span className={`mt-1.5 w-1 h-1 rounded-full ${card.color.replace("text-", "bg-")} shrink-0`} />
                             {bullet}
                           </li>
                         ))}

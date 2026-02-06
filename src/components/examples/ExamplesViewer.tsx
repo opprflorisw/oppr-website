@@ -1,32 +1,29 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CaretLeft, CaretRight, CaretDown } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { EASE_SMOOTH_OUT } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 import { examples } from "./examplesData";
 import { ExampleViewerContent } from "./ExampleViewerContent";
 
-const categoryColors: Record<string, { bg: string; text: string }> = {
-  maintenance: { bg: "rgba(99,102,241,0.1)", text: "#6366F1" },
-  quality: { bg: "rgba(245,158,11,0.1)", text: "#D97706" },
-  knowledge: { bg: "rgba(236,72,153,0.1)", text: "#DB2777" },
-  efficiency: { bg: "rgba(16,185,129,0.1)", text: "#059669" },
+const categoryThemes: Record<string, { base: string; light: string; border: string }> = {
+  maintenance: { base: "#6366F1", light: "rgba(99,102,241,0.05)", border: "rgba(99,102,241,0.2)" },
+  quality: { base: "#D97706", light: "rgba(217,119,6,0.05)", border: "rgba(217,119,6,0.2)" },
+  knowledge: { base: "#DB2777", light: "rgba(219,39,119,0.05)", border: "rgba(219,39,119,0.2)" },
+  efficiency: { base: "#059669", light: "rgba(5,150,105,0.05)", border: "rgba(5,150,105,0.2)" },
 };
 
 export function ExamplesViewer() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback(
     (index: number) => {
       setDirection(index > activeIndex ? 1 : -1);
       setActiveIndex(index);
-      setDropdownOpen(false);
     },
     [activeIndex]
   );
@@ -48,24 +45,10 @@ export function ExamplesViewer() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") goNext();
       if (e.key === "ArrowLeft") goPrev();
-      if (e.key === "Escape") setDropdownOpen(false);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [goNext, goPrev]);
-
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    if (dropdownOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, [dropdownOpen]);
 
   const variants = {
     enter: (dir: number) => ({
@@ -82,9 +65,6 @@ export function ExamplesViewer() {
     }),
   };
 
-  const active = examples[activeIndex];
-  const ActiveIcon = active.icon;
-
   return (
     <SectionWrapper bg="light">
       <div
@@ -92,97 +72,49 @@ export function ExamplesViewer() {
         role="region"
         aria-label="Example scenarios viewer"
       >
-        {/* Dropdown selector */}
-        <div ref={dropdownRef} className="relative mb-6">
-          <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className={cn(
-              "w-full flex items-center justify-between gap-3 bg-white border rounded-xl px-5 py-4 transition-all shadow-sm",
-              dropdownOpen
-                ? "border-oppr-primary/40 shadow-md"
-                : "border-border-light hover:border-oppr-primary/30 hover:shadow-md"
-            )}
-          >
-            <div className="flex items-center gap-3 min-w-0">
-              <div
-                className={`w-10 h-10 rounded-lg bg-gradient-to-br ${active.iconGradient} flex items-center justify-center flex-shrink-0 shadow-sm`}
-              >
-                <ActiveIcon size={20} weight="duotone" className="text-white" />
-              </div>
-              <div className="min-w-0 text-left">
-                <p className="text-base font-semibold text-text-primary truncate">
-                  {active.title}
-                </p>
-                <p className="text-xs text-text-muted">{active.categoryLabel}</p>
-              </div>
-            </div>
-            <CaretDown
-              size={18}
-              weight="bold"
-              className={cn(
-                "text-text-muted flex-shrink-0 transition-transform duration-200",
-                dropdownOpen && "rotate-180"
-              )}
-            />
-          </button>
+        {/* Category Buttons (Horizontal & Compact) */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-8 max-w-[1100px] mx-auto">
+          {examples.map((ex, i) => {
+            const isActive = activeIndex === i;
+            const Icon = ex.icon;
+            const theme = categoryThemes[ex.category] || categoryThemes.maintenance;
 
-          {/* Dropdown menu */}
-          <AnimatePresence>
-            {dropdownOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -8, scale: 0.98 }}
-                transition={{ duration: 0.18, ease: EASE_SMOOTH_OUT }}
-                className="absolute top-full left-0 right-0 z-50 mt-2 bg-white border border-border-light rounded-xl shadow-xl overflow-hidden"
+            return (
+              <button
+                key={ex.title}
+                onClick={() => goTo(i)}
+                className={cn(
+                  "flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all duration-300 group overflow-hidden",
+                  isActive
+                    ? "bg-white shadow-sm ring-1"
+                    : "bg-white/40 border-slate-100 hover:bg-white hover:border-slate-200"
+                )}
+                style={{
+                  borderColor: isActive ? theme.base : undefined,
+                  boxShadow: isActive ? `0 4px 12px ${theme.base}15` : undefined,
+                  outlineColor: isActive ? `${theme.base}40` : undefined,
+                }}
               >
-                {examples.map((ex, i) => {
-                  const ExIcon = ex.icon;
-                  const colors = categoryColors[ex.category];
-                  return (
-                    <button
-                      key={ex.title}
-                      onClick={() => goTo(i)}
-                      className={cn(
-                        "w-full flex items-center gap-3 px-5 py-3.5 text-left transition-colors",
-                        activeIndex === i
-                          ? "bg-oppr-primary/[0.04]"
-                          : "hover:bg-bg-light/60",
-                        i !== examples.length - 1 && "border-b border-border-light/50"
-                      )}
-                    >
-                      <div
-                        className={`w-9 h-9 rounded-lg bg-gradient-to-br ${ex.iconGradient} flex items-center justify-center flex-shrink-0`}
-                      >
-                        <ExIcon size={18} weight="duotone" className="text-white" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <p className={cn(
-                          "text-sm truncate",
-                          activeIndex === i
-                            ? "font-semibold text-text-primary"
-                            : "font-medium text-text-secondary"
-                        )}>
-                          {ex.title}
-                        </p>
-                      </div>
-                      {colors && (
-                        <span
-                          className="px-2.5 py-0.5 text-[10px] font-semibold rounded-full flex-shrink-0 uppercase tracking-wider"
-                          style={{
-                            backgroundColor: colors.bg,
-                            color: colors.text,
-                          }}
-                        >
-                          {ex.categoryLabel}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300"
+                  style={{
+                    backgroundColor: isActive ? theme.base : theme.light,
+                    color: isActive ? "white" : theme.base
+                  }}
+                >
+                  <Icon size={16} weight={isActive ? "bold" : "duotone"} />
+                </div>
+                <div className="flex flex-col items-start min-w-0">
+                  <span className={cn(
+                    "text-[10px] font-bold uppercase tracking-wider truncate",
+                    isActive ? "text-slate-900" : "text-slate-500 group-hover:text-slate-700"
+                  )}>
+                    {ex.categoryLabel}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
         {/* Viewer panel */}
@@ -248,3 +180,4 @@ export function ExamplesViewer() {
     </SectionWrapper>
   );
 }
+

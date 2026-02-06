@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       role,
       companySize,
       interest,
-      notes,
+      message,
     } = body;
 
     if (!firstName || !lastName || !email || !company) {
@@ -27,24 +27,25 @@ export async function POST(request: Request) {
     }
 
     const interestLabels: Record<string, string> = {
-      capture: "Capturing operator knowledge",
-      "root-cause": "Faster root cause analysis",
-      expertise: "Preserving expertise before retirement",
-      ci: "Continuous improvement infrastructure",
-      insights: "Oppr Insights strategic feedback",
-      full: "Full platform evaluation",
-      other: "Other",
+      information: "General information about Oppr Insights",
+      discuss: "Discuss Oppr Insights with the team",
+      "idea-starter": "Idea Starter (€299/month)",
+      "idea-engine": "Idea Engine (€899/month)",
     };
+
+    const subjectDetail = interest && interestLabels[interest]
+      ? interestLabels[interest]
+      : "General inquiry";
 
     await getResend().emails.send({
       from: "Oppr.ai Website <noreply@oppr.ai>",
       to: ["info@oppr.ai"],
       replyTo: email,
-      subject: `Demo Request from ${firstName} ${lastName} at ${company}`,
+      subject: `Oppr Insights Inquiry from ${firstName} ${lastName} at ${company} — ${subjectDetail}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1E3A5F; border-bottom: 2px solid #E07A3D; padding-bottom: 12px;">
-            New Demo Request
+            New Oppr Insights Inquiry
           </h2>
 
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -62,20 +63,20 @@ export async function POST(request: Request) {
             </tr>
             ${role ? `<tr style="background: #f8fafc;"><td style="padding: 10px 12px; font-weight: 600; color: #1E3A5F; vertical-align: top;">Role</td><td style="padding: 10px 12px; color: #333;">${role}</td></tr>` : ""}
             ${companySize ? `<tr><td style="padding: 10px 12px; font-weight: 600; color: #1E3A5F; vertical-align: top;">Company Size</td><td style="padding: 10px 12px; color: #333;">${companySize}</td></tr>` : ""}
-            ${interest ? `<tr style="background: #f8fafc;"><td style="padding: 10px 12px; font-weight: 600; color: #1E3A5F; vertical-align: top;">Primary Interest</td><td style="padding: 10px 12px; color: #333;">${interestLabels[interest] || interest}</td></tr>` : ""}
+            ${interest ? `<tr style="background: #f8fafc;"><td style="padding: 10px 12px; font-weight: 600; color: #1E3A5F; vertical-align: top;">Interest</td><td style="padding: 10px 12px; color: #333;">${interestLabels[interest] || interest}</td></tr>` : ""}
           </table>
 
           ${
-            notes
+            message
               ? `<div style="margin: 20px 0;">
-                  <h3 style="color: #1E3A5F; margin-bottom: 8px;">Additional Notes</h3>
-                  <div style="background: #f8fafc; padding: 16px; border-radius: 8px; color: #333; line-height: 1.6; white-space: pre-wrap;">${notes}</div>
+                  <h3 style="color: #1E3A5F; margin-bottom: 8px;">Message</h3>
+                  <div style="background: #f8fafc; padding: 16px; border-radius: 8px; color: #333; line-height: 1.6; white-space: pre-wrap;">${message}</div>
                 </div>`
               : ""
           }
 
           <p style="color: #999; font-size: 12px; margin-top: 30px; border-top: 1px solid #eee; padding-top: 12px;">
-            Sent from the Oppr.ai demo request form
+            Sent from the Oppr.ai Insights contact form
           </p>
         </div>
       `,
@@ -83,7 +84,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Demo form error:", error);
+    console.error("Insights form error:", error);
     return NextResponse.json(
       { error: "Failed to send request. Please try again." },
       { status: 500 }

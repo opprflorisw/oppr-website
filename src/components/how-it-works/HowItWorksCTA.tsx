@@ -40,15 +40,15 @@ export function HowItWorksCTA() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary bg-white rounded-lg border-2 border-white hover:bg-oppr-light transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/10"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-oppr-primary bg-white rounded-lg border-2 border-white hover:bg-oppr-light transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/10 focus-ring"
             >
               Book a Demo
             </Link>
             <Link
-              href="/examples"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-lg border-2 border-white/20 hover:bg-white/10 hover:border-white/30 transition-all glass-dark"
+              href="/insights"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-lg border-2 border-white/20 hover:bg-white/10 hover:border-white/30 transition-all glass-dark focus-ring"
             >
-              See Examples
+              Start with Insights
               <ArrowRight size={18} weight="bold" />
             </Link>
           </div>

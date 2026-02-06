@@ -29,9 +29,13 @@ export const metadata: Metadata = {
     template: "%s | Oppr.ai",
   },
   description:
-    "The human data layer for manufacturing. Capture operator knowledge, connect it to machine data, preserve expertise.",
+    "The human data layer for manufacturing. Capture operator knowledge, connect it to machine data, preserve expertise. Start with Oppr Insights to discover where your biggest opportunities are.",
   icons: {
     icon: "/images/oppr_favicon.png",
+  },
+  other: {
+    "theme-color": "#1E3A5F",
+    "color-scheme": "light",
   },
 };
 
@@ -41,12 +45,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ colorScheme: "light" }}>
       <body
         className={`${plusJakarta.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <a href="#main" className="skip-to-content">
+          Skip to main content
+        </a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

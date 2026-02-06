@@ -61,7 +61,7 @@ const categories = [
             },
             {
                 q: "What's the difference between Oppr Insights and the full platform?",
-                a: "Oppr Insights is a self-serve diagnostic tool. It lets you ask your entire workforce a strategic question — asynchronously, in any language — and uses AI to analyze all responses, identify themes, and surface actionable patterns. Think of it as a structured way to tap into collective intelligence: what do your operators actually see? Where are the real bottlenecks? What knowledge is at risk? It helps you discover where the biggest opportunities are. The full Oppr platform (LOGS + IDA + DOCS) is then the execution engine: capture knowledge continuously in the flow of work, analyze patterns with AI, and implement improvements through living documentation. Insights = Discover. Platform = Execute.",
+                a: "Oppr Insights is your ideation and discovery tool. It gives everyone in your organization a voice — asynchronously, in any language — and uses AI to structure loose ideas, observations, and gut feelings into clear priorities. Think of it as structured ideation: no more meetings dominated by the loudest voice, no forms, no friction. AI does the heavy lifting — surfacing themes, identifying patterns, and organizing what your team already senses into actionable starting points. The full Oppr platform (LOGS + IDA + DOCS) is the execution engine: capture knowledge continuously in the flow of work, investigate root causes with AI, and turn validated insights into living procedures. Insights = Ideate. Platform = Execute.",
             }
         ]
     },

@@ -226,6 +226,7 @@ function SvgNode({
       <motion.button
         onClick={onClick}
         className="flex flex-col items-center cursor-pointer w-full"
+        aria-label={`View ${mod.label} module details`}
         animate={{ scale: isActive ? 1.1 : 1 }}
         transition={{ duration: 0.4, ease: EASE_SNAP }}
         style={{ transformOrigin: `${NODE_R}px ${NODE_R}px` }}
@@ -438,12 +439,14 @@ export function ClosedLoopAnimation() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex items-center justify-center gap-2 mt-5">
+          <div className="flex items-center justify-center gap-2 mt-5" role="tablist">
             {modules.map((mod, i) => (
               <button
                 key={mod.id}
                 onClick={() => handleNodeClick(i)}
                 className="relative p-1"
+                role="tab"
+                aria-selected={activeIndex === i}
                 aria-label={`View ${mod.label}`}
               >
                 <motion.div
@@ -475,6 +478,7 @@ export function ClosedLoopAnimation() {
                 <button
                   onClick={() => handleNodeClick(i)}
                   className="flex flex-col items-center"
+                  aria-label={`View ${mod.label} module details`}
                 >
                   <motion.div
                     className={cn(
@@ -575,12 +579,14 @@ export function ClosedLoopAnimation() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="flex items-center justify-center gap-2 mt-4">
+        <div className="flex items-center justify-center gap-2 mt-4" role="tablist">
           {modules.map((mod, i) => (
             <button
               key={mod.id}
               onClick={() => handleNodeClick(i)}
               className="p-1"
+              role="tab"
+              aria-selected={activeIndex === i}
               aria-label={`View ${mod.label}`}
             >
               <motion.div

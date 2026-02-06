@@ -48,7 +48,7 @@ export function AnimatedCounter({
   }, [rounded]);
 
   return (
-    <motion.span ref={ref} className={className}>
+    <motion.span ref={ref} className={`tabular-nums ${className ?? ""}`}>
       {prefix}
       {displayValue}
       {suffix}

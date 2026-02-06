@@ -7,7 +7,7 @@ import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
 const inputClasses =
-  "w-full border border-border-light rounded-lg px-4 py-3 focus:border-oppr-primary focus:outline-none text-text-primary bg-white transition-colors";
+  "w-full border border-border-light rounded-lg px-4 py-3 focus:border-oppr-primary focus:outline-none text-text-primary bg-white transition-colors focus-visible:ring-2 focus-visible:ring-oppr-primary focus-visible:ring-offset-2";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -183,10 +183,11 @@ export function ContactSection() {
                       name="name"
                       type="text"
                       required
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleChange}
                       className={inputClasses}
-                      placeholder="Your name"
+                      placeholder="Your name…"
                     />
                   </div>
 
@@ -203,10 +204,11 @@ export function ContactSection() {
                       name="email"
                       type="email"
                       required
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleChange}
                       className={inputClasses}
-                      placeholder="you@company.com"
+                      placeholder="you@company.com…"
                     />
                   </div>
 
@@ -222,10 +224,11 @@ export function ContactSection() {
                       id="contact-company"
                       name="company"
                       type="text"
+                      autoComplete="organization"
                       value={formData.company}
                       onChange={handleChange}
                       className={inputClasses}
-                      placeholder="Your company"
+                      placeholder="Your company…"
                     />
                   </div>
 
@@ -294,7 +297,7 @@ export function ContactSection() {
                       value={formData.message}
                       onChange={handleChange}
                       className={inputClasses}
-                      placeholder="How can we help?"
+                      placeholder="How can we help?…"
                     />
                   </div>
 
@@ -309,7 +312,7 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-primary/90 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                    className="w-full py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-primary/90 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus-ring"
                   >
                     {status === "loading" ? "Sending..." : "Send Message"}
                   </button>

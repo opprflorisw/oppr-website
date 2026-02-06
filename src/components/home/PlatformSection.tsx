@@ -18,7 +18,7 @@ export function PlatformSection() {
       <div className="flex justify-center mt-10">
         <Link
           href="/how-it-works"
-          className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-xl"
+          className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-oppr-primary rounded-lg hover:bg-oppr-dark transition-all hover:-translate-y-0.5 hover:shadow-xl focus-ring"
         >
           See How It Works
           <ArrowRight size={18} weight="bold" />

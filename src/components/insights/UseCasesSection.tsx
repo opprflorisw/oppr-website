@@ -31,9 +31,9 @@ const useCases: UseCase[] = [
   },
   {
     icon: MagnifyingGlass,
-    title: "Root Cause Investigation",
+    title: "Issue Discovery",
     description:
-      "When something goes wrong, gather observations from everyone involved—different shifts, departments, perspectives. AI synthesizes the complete picture.",
+      "Gather observations from everyone involved — across shifts and departments. AI structures the inputs and surfaces patterns, giving you a clear starting point for deeper investigation with the core platform.",
   },
   {
     icon: Brain,

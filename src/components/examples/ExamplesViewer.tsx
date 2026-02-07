@@ -106,10 +106,16 @@ export function ExamplesViewer() {
                 </div>
                 <div className="flex flex-col items-start min-w-0">
                   <span className={cn(
-                    "text-[10px] font-bold uppercase tracking-wider truncate",
+                    "text-[10px] font-bold uppercase tracking-wider truncate w-full",
                     isActive ? "text-slate-900" : "text-slate-500 group-hover:text-slate-700"
                   )}>
                     {ex.categoryLabel}
+                  </span>
+                  <span className={cn(
+                    "text-[11px] font-medium truncate w-full",
+                    isActive ? "text-slate-700" : "text-slate-400"
+                  )}>
+                    {ex.title}
                   </span>
                 </div>
               </button>

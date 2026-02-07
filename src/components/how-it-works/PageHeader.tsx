@@ -59,8 +59,7 @@ export function PageHeader() {
               Watch Video
             </button>
 
-            <p className="text-sm text-text-muted mt-4">
-              Not sure where to start?{" "}
+            <p className="mt-4">
               <Link
                 href="/insights"
                 className="text-sm text-oppr-secondary hover:underline font-medium"
